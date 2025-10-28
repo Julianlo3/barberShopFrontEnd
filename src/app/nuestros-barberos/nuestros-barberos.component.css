@@ -1,0 +1,9 @@
+*{
+  color: black;
+}
+
+.carousel-control-next-icon,.carousel-control-prev-icon{
+  color: black;
+  background-color: black;
+  width: 50px;
+}

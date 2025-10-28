@@ -1,0 +1,14 @@
+#top{
+  display: grid;
+  grid-template-columns: 10% 80% 10%;
+  align-items: center;
+}
+
+#iniciarSesion{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 4px;
+}
+
+

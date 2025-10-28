@@ -1,1 +1,64 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Belgrano&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Zen+Dots&display=swap');
+
+.tituloPrincipal{
+  text-align: center;
+  font-family: "Belgrano", serif;
+  font-size: 64px;
+}
+
+.tituloSecunIcon{
+  text-decoration: none;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.tituloSecunIcon h2{
+  display: flex;
+  align-items: center;
+  font-family: "Belgrano", serif;
+  font-size: 52px;
+}
+
+.iconTitle{
+  text-align: center;
+  font-family: "Lato", serif;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+p{
+  font-family: "Lato", serif;
+  font-size: 20px;
+  text-align: center;
+}
+
+.imgCard{
+  width: 250px;
+  height: 250px;
+}
+
+.card-title{
+  font-family: "Belgrano", serif;
+}
+
+.card-text{
+  font-family: "Lato", serif;
+  text-align: left;
+}
+
+.card-img-top{
+  text-align: center;
+}
+
+.carousel-item img{
+  width: 500px;
+  height: 500px;
+}
+
+.imgGrande{
+  width: 300px;
+  height: 300px;
+}
