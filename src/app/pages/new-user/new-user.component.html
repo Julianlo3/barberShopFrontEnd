@@ -3,12 +3,16 @@
   <h2>Nuevo Cliente</h2>
 </div>
 
-<form class="row g-3 w-50 mx-auto p-4">
+
+<form (ngSubmit)="onSubmit()"  class="row g-3 w-50 mx-auto p-4">
   <label for="newUserName">Nombre completo</label>
-  <input type="text" class="form-control" id="newUserName" placeholder="Pepito bigotes">
+  <input type="text" class="form-control" id="newUserName"
+         [(ngModel)]="Client.nombre" name="nombre"
+         placeholder="Pepito bigotes">
   <div class="col-md-6">
     <label for="newUserEmail" class="form-label">Correo electronico</label>
-    <input type="email" class="form-control" id="newUserEmail" placeholder="bigotes@gmail.com">
+    <input type="email" class="form-control" id="newUserEmail" [(ngModel)]="Client.correo" name="correo"
+           placeholder="bigotes@gmail.com">
   </div>
   <div class="col-md-6">
     <label for="newUserPass" class="form-label">Clave</label>

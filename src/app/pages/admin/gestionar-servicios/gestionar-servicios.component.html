@@ -1,0 +1,79 @@
+<div class="accordion-container">
+  <!-- Tarjeta 1: Agregar servicios -->
+  <div class="accordion-card active">
+    <div class="accordion-header">
+      <i class="fa-solid fa-plus-circle fa-4x"></i>
+      <h2>Agregar Servicios</h2>
+      <p>Agregue nuevos servicios a la barbería</p>
+    </div>
+    <div class="card-content">
+      <form>
+        <div class="mb-3">
+          <label class="form-label">Nombre del servicio</label>
+          <input type="text" class="form-control" placeholder="Ej: Corte clásico">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Descripción</label>
+          <textarea class="form-control" rows="3" placeholder="Describe el servicio..."></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Precio</label>
+          <input type="number" class="form-control" placeholder="Ej: 25000">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Creado por</label>
+          <input type="text" class="form-control" placeholder="Nombre del barbero">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Imagen (URL)</label>
+          <input type="text" class="form-control" placeholder="URL de la imagen del servicio">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Categoría</label>
+          <select class="form-select">
+            <option selected disabled>Seleccionar categoría</option>
+            <option value="1">Cortes</option>
+            <option value="2">Afeitado</option>
+            <option value="3">Tintura</option>
+          </select>
+        </div>
+
+        <div class="form-check mb-3">
+          <input type="checkbox" class="form-check-input" id="activo" checked>
+          <label class="form-check-label" for="activo">Activo</label>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Guardar Servicio</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Tarjeta 2: Listar servicios -->
+  <div class="accordion-card">
+    <div class="accordion-header">
+      <i class="fa-solid fa-list fa-4x"></i>
+      <h2>Listar Servicios</h2>
+      <p>Mire todos los servicios disponibles</p>
+    </div>
+    <div class="card-content">
+      <p>Aquí se mostrará la lista de servicios registrados...</p>
+    </div>
+  </div>
+
+  <!-- Tarjeta 3: Editar/Eliminar -->
+  <div class="accordion-card">
+    <div class="accordion-header">
+      <i class="fa-solid fa-pen fa-4x"></i>
+      <h2>Editar o Eliminar</h2>
+      <p>Modifique o elimine un servicio existente</p>
+    </div>
+    <div class="card-content">
+      <p>Contenido para editar o eliminar servicios...</p>
+    </div>
+  </div>
+</div>
