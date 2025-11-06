@@ -8,13 +8,20 @@
     <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" routerLink="/home">Inicio</a>
+          <a class="nav-link active" aria-current="page" routerLink="home">Inicio</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="#">Cortes</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="#">Servicios</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Servicios
+          </a>
+          <ul class="dropdown-menu">
+            <li><a routerLink="Servicios" class="dropdown-item" >ver servicios</a></li>
+            <li><a class="dropdown-item" routerLink="servicio/ofertas">Ofertas</a></li>
+            <li><a class="dropdown-item" routerLink="servicio/cupones">Cupones</a></li>
+          </ul>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/reserva">Reservas</a>
@@ -27,8 +34,8 @@
             Administrador
           </a>
           <ul class="dropdown-menu">
-            <li><a routerLink="/newBarbero" class="dropdown-item" >Agregar barberos</a></li>
-            <li><a class="dropdown-item" routerLink="/gestionarReservas">Gestionar servicios</a></li>
+            <li><a routerLink="admin/newBarbero" class="dropdown-item" >Agregar barberos</a></li>
+            <li><a class="dropdown-item" routerLink="admin/gestionarReservas">Gestionar servicios</a></li>
             <li><a class="dropdown-item" routerLink="#">Reporte y estadisticas</a></li>
           </ul>
         </li>

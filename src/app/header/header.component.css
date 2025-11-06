@@ -1,14 +1,57 @@
-#top{
-  display: grid;
-  grid-template-columns: 10% 80% 10%;
-  align-items: center;
+/* ====== Header general ====== */
+#header {
+  background-color: #1e1e1e; /* Fondo oscuro elegante */
+  color: #f5f5f5;
+  padding: 10px 0;
+  border-bottom: 4px solid #c59d5f; /* línea dorada */
 }
 
-#iniciarSesion{
+/* ====== Sección superior ====== */
+#top {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+}
+
+#top img {
+  justify-self: start;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+#top img:hover {
+  transform: scale(1.05);
+}
+
+.tituloPrincipal {
+  text-align: center;
+  font-family: "Belgrano", serif;
+  font-size: 2.8rem;
+  color: #f5f5f5;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+}
+
+#iniciarSesion {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  padding-right: 4px;
 }
 
+.iconTitle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #f5f5f5;
+  transition: color 0.3s ease;
+}
 
+.iconTitle:hover {
+  color: #c59d5f;
+}
+
+.iconTitle i {
+  margin-bottom: 5px;
+}
