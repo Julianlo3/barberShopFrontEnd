@@ -122,21 +122,5 @@ body {
   background-color: #b48c50;
 }
 
-/* ====== Footer ====== */
-footer {
-  background-color: var(--color-primario);
-  color: white;
-  text-align: center;
-  padding: 1.5rem;
-  margin-top: 3rem;
-}
 
-footer i {
-  margin: 0 10px;
-  color: var(--color-secundario);
-  transition: color 0.3s ease;
-}
 
-footer i:hover {
-  color: white;
-}

@@ -1,20 +1,20 @@
-import { Component,OnInit } from '@angular/core';
-import {NgOptimizedImage} from "@angular/common";
-import {ServicioService} from "../logica/services/servicioService";
-import {CommonModule} from "@angular/common";
-
+import { Component } from '@angular/core';
+import {DecimalPipe, NgForOf, NgIf} from "@angular/common";
+import {ServicioService} from "../../logica/services/servicioService";
 
 @Component({
-  selector: 'app-cortes',
+  selector: 'app-all-cortes',
   standalone: true,
-  imports: [
-    NgOptimizedImage,CommonModule,
-  ],
-  templateUrl: './cortes.component.html',
-  styleUrl: './cortes.component.css'
+    imports: [
+        DecimalPipe,
+        NgForOf,
+        NgIf
+    ],
+  templateUrl: './all-cortes.component.html',
+  styleUrl: './all-cortes.component.css'
 })
+export class AllCortesComponent {
 
-export class CortesComponent implements OnInit{
   Cortes: any[] = []; // Aquí se guardarán las categorías
   CorteSeleccionado: string = ''; // Para manejar la selección
 
@@ -27,7 +27,7 @@ export class CortesComponent implements OnInit{
   cargarCortes(): void {
     this.servicioService.getServiciosByCategoriaId("1").subscribe({
       next: (data) => {
-        this.Cortes = data.slice(0, 3);
+        this.Cortes = data;
       },
       error: (err) => {
         console.error('Error al obtener cortes:', err);
@@ -39,4 +39,5 @@ export class CortesComponent implements OnInit{
     this.CorteSeleccionado = nombre;
     console.log('Corte seleccionada:', nombre);
   }
+
 }

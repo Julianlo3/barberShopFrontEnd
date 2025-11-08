@@ -1,0 +1,7 @@
+i,h2{
+  color: white;
+}
+
+i:hover,h2:hover{
+  color: #c59d5f;
+}

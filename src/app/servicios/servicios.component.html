@@ -4,42 +4,45 @@
     <h2>Servicios</h2>
   </div>
 
-  <div id="carouselExampleCaptions" class="carousel slide">
+  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      <button *ngFor="let serv of serviciosLimitados; let i = index"
+              type="button"
+              data-bs-target="#carouselExampleCaptions"
+              [attr.data-bs-slide-to]="i"
+              [class.active]="i === 0"
+              [attr.aria-label]="'Slide ' + (i + 1)">
+      </button>
     </div>
+
     <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img ngSrc="assets/img/SinFoto.png" class="d-block w-100" alt="..." height="512" width="512">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>First slide label</h5>
-          <p>Some representative placeholder content for the first slide.</p>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img ngSrc="assets/img/SinFoto.png" class="d-block w-100" alt="..." height="512" width="512">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Second slide label</h5>
-          <p>Some representative placeholder content for the second slide.</p>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img ngSrc="/assets/img/SinFoto.png" class="d-block w-100" alt="..." height="512" width="512">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Third slide label</h5>
-          <p>Some representative placeholder content for the third slide.</p>
+      <div *ngFor="let servicio of serviciosLimitados; let i = index"
+           class="carousel-item"
+           [class.active]="i === 0">
+        <img [src]="'http://localhost:8083' + servicio.imagenURL"
+             class="d-block w-100"
+             alt="{{ servicio.nombre }}"
+             height="512"
+             width="512"
+             onerror="this.src='assets/img/SinFoto.png'">
+
+        <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-75 rounded p-3">
+          <h5>{{ servicio.nombre }}</h5>
+          <p>{{ servicio.descripcion }}</p>
+          <p class="precio">${{ servicio.precio | number:'1.0-0' }}</p>
         </div>
       </div>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+
+    <button class="carousel-control-prev" type="button"
+            data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
+      <span class="visually-hidden">Anterior</span>
     </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <button class="carousel-control-next" type="button"
+            data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
+      <span class="visually-hidden">Siguiente</span>
     </button>
   </div>
 </section>

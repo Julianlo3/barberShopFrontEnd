@@ -1,0 +1,41 @@
+<div class="tituloSecunIcon">
+  <i class="fa-solid fa-list fa-4x"></i>
+  <h2>Todos los servicios</h2>
+</div>
+
+
+    <div id="cortesCards2" class="container-fluid">
+      <div class="container-fluid">
+        <ul class="nav justify-content-center">
+          <li class="nav-item" *ngFor="let cat of categorias">
+            <a class="nav-link"
+               [class.active]="cat.nombre === categoriaSeleccionada"
+               (click)="seleccionarCategoria(cat.id)">
+              {{ cat.nombre }}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  <div class="card-content">
+    <div *ngIf="servicios.length > 0; else noServicios">
+      <div class="row">
+        <div class="col-md-4" *ngFor="let s of servicios">
+          <div class="card shadow-sm mb-4">
+            <img [src]="'http://localhost:8083' + s.imagenURL" class="card-img-top" alt="{{ s.nombre }}">
+            <div class="card-body">
+              <h5 class="card-title">{{ s.nombre }}</h5>
+              <p class="card-text">{{ s.descripcion }}</p>
+              <p class="card-text fw-bold text-dark">$ {{ s.precio | number }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #noServicios>
+      <p class="text-muted text-center">No hay servicios registrados aún.</p>
+    </ng-template>
+  </div>
+

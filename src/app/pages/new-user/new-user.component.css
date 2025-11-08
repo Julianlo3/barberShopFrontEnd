@@ -1,0 +1,73 @@
+#newUser {
+  background-color: #1e1e1e;
+  color: white;
+  min-height: 100vh;
+  padding-top: 3rem;
+  text-align: center;
+}
+
+.tituloSecunIcon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #c59d5f;
+  margin-bottom: 2rem;
+}
+
+.tituloSecunIcon h2 {
+  margin-top: 1rem;
+  font-weight: 600;
+  color: #c59d5f;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+form {
+  background-color: #fff;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 4px 15px rgba(197, 157, 95, 0.3);
+  transition: all 0.3s ease;
+}
+
+form:hover {
+  box-shadow: 0 6px 20px rgba(197, 157, 95, 0.5);
+}
+
+label {
+  color: #1e1e1e;
+  font-weight: 500;
+}
+
+input, select {
+  border: 2px solid #c59d5f;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  padding: 0.6rem;
+}
+
+input:focus, select:focus {
+  border-color: #1e1e1e;
+  box-shadow: 0 0 5px rgba(197, 157, 95, 0.6);
+}
+
+input::placeholder {
+  color: #8c8c8c;
+  opacity: 1;
+}
+
+#btnCrearCuenta {
+  background-color: #c59d5f;
+  border: none;
+  color: #1e1e1e;
+  font-weight: 600;
+  padding: 0.8rem 2rem;
+  border-radius: 2rem;
+  transition: all 0.3s ease;
+}
+
+#btnCrearCuenta:hover {
+  background-color: #1e1e1e;
+  color: #c59d5f;
+  box-shadow: 0 0 10px rgba(197, 157, 95, 0.7);
+}

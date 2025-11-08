@@ -1,37 +1,82 @@
-<div class="tituloSecunIcon">
-  <i class="fa-solid fa-hand-point-up fa-4x"></i>
-  <h2>Nueva cita</h2>
-</div>
-
-
-<div class="row col-md-12 mx-auto align-items-center">
-  <img class="col-md-6" ngSrc="assets/img/SinFoto.png" alt="" width="320" height="320">
-
-<form (ngSubmit)="onSubmit()" class="g-3 w-50 mx-auto p-4">
-  <div class="col-mg-6">
-    <label for="newUserName">Nombre completo</label>
-    <input type="text" class="form-control " id="citaNombreUser"
-           [(ngModel)]="cita.nombreCliente" name="nombreCliente" placeholder="Pepito bigotes">
-    <label for="selectBarbero">Barbero a elección</label>
-    <select class="form-select" name="selectBarbero" id="selectBarbero"></select>
+<section id="nueva-cita">
+  <div class="tituloSecunIcon">
+    <i class="fa-solid fa-hand-point-up fa-4x"></i>
+    <h2>Nueva cita</h2>
   </div>
 
-  <label for="inputState" class="form-label">Ciudad</label>
-  <select id="inputState" class="form-select" name="selectCiudad">
-    <option selected>Escoge tu ciudad</option>
-    <option>Pitalito</option>
-    <option>Popayan</option>
-  </select>
+  <div class="row justify-content-center align-items-center contenido-cita">
+    <!-- Imagen -->
+    <div class="col-12 col-md-5 text-center mb-4 mb-md-0">
+      <img
+        ngSrc="assets/img/nuevaReserva.jpg"
+        alt="Imagen cita"
+        width="500"
+        height="500"
+        class="img-cita"
+      />
+    </div>
 
-  <div class="col-12">
-    <label for="fechaCita">Fecha de la cita</label>
-    <input type="date" id="fechaCita" [ngModel]="cita.fechaCita" name="fechaCita">
-    <label for="horaCita">Hora cita</label>
-    <input type="time" id="horaCita" [ngModel]="cita.horaCita" name="horaCita">
-  </div>
+    <!-- Formulario -->
+    <form (ngSubmit)="onSubmit()" class="col-12 col-md-6 form-cita">
+      <div class="mb-3">
+        <label for="citaNombreUser" class="form-label">Nombre completo</label>
+        <input
+          type="text"
+          class="form-control"
+          id="citaNombreUser"
+          [(ngModel)]="cita.nombreCliente"
+          name="nombreCliente"
+          placeholder="Pepito Bigotes"
+          required
+        />
+      </div>
 
-  <div class="col-12 p-4">
-    <button id="btnCrearCuenta"   type="submit" class="btn btn-primary">Crear cuenta</button>
+      <div class="mb-3">
+        <label for="selectBarbero" class="form-label">Barbero a elección</label>
+        <select
+          class="form-select"
+          id="selectBarbero"
+          [(ngModel)]="cita.nombreBarbero"
+          name="barbero"
+          required
+        >
+          <option disabled selected>Seleccione un barbero</option>
+          <option>Juan</option>
+          <option>Carlos</option>
+          <option>David</option>
+        </select>
+      </div>
+
+      <div class="row mb-4">
+        <div class="col-6">
+          <label for="fechaCita" class="form-label">Fecha de la cita</label>
+          <input
+            type="date"
+            id="fechaCita"
+            class="form-control"
+            [(ngModel)]="cita.fechaCita"
+            name="fechaCita"
+            required
+          />
+        </div>
+        <div class="col-6">
+          <label for="horaCita" class="form-label">Hora cita</label>
+          <input
+            type="time"
+            id="horaCita"
+            class="form-control"
+            [(ngModel)]="cita.horaCita"
+            name="horaCita"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary px-4 py-2">
+          Agendar cita
+        </button>
+      </div>
+    </form>
   </div>
-</form>
-</div>
+</section>

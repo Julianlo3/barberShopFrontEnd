@@ -1,8 +1,9 @@
 .footer {
-  background-color: #3a2c1a; /* tono madera oscuro */
-  color: #f2e6d8; /* texto claro */
+  background-color: #f5f5f5; /* tono madera oscuro */
+  color: #1e1e1e; /* texto claro */
   padding: 20px 0;
   text-align: center;
+  margin-top: 3rem;
   font-family: "Lato", sans-serif;
 }
 
@@ -19,11 +20,11 @@
 }
 
 .social-icons a {
-  color: #f2e6d8;
+  color: #1e1e1e;;
   font-size: 1.5rem;
   transition: color 0.3s ease;
 }
 
 .social-icons a:hover {
-  color: #d2a679; /* tono madera claro */
+  color: #c59d5f; /* tono madera claro */
 }

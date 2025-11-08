@@ -1,0 +1,112 @@
+/* ====== CONTENEDOR PRINCIPAL ====== */
+#login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #1e1e1e;
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  padding: 2rem;
+}
+
+/* ====== TÍTULO CON ICONO ====== */
+.tituloSecunIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  color: #c59d5f;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.tituloSecunIcon h2 {
+  font-weight: 600;
+  font-size: 1.8rem;
+  letter-spacing: 0.5px;
+}
+
+/* ====== FORMULARIO ====== */
+form {
+  background-color: #2a2a2a;
+  border: 1px solid #3a3a3a;
+  border-radius: 1rem;
+  padding: 2rem;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+  transition: border-color 0.3s ease;
+}
+
+form:hover {
+  border-color: #c59d5f;
+}
+
+/* ====== CAMPOS ====== */
+.form-label {
+  color: #c59d5f;
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+}
+
+.form-control {
+  background-color: #1e1e1e;
+  border: 1px solid #3a3a3a;
+  color: #ffffff;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: #c59d5f;
+  box-shadow: 0 0 0 0.1rem rgba(197,157,95,0.25);
+  background-color: #232323;
+  color: #fff;
+}
+
+::placeholder {
+  color: #aaaaaa;
+  opacity: 0.8;
+}
+
+/* ====== BOTÓN PRINCIPAL ====== */
+#btnIniciarSesion {
+  width: 100%;
+  padding: 0.9rem;
+  border-radius: 0.5rem;
+  background-color: #c59d5f;
+  border: none;
+  color: #1e1e1e;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  transition: all 0.3s ease;
+}
+
+#btnIniciarSesion:hover {
+  background-color: #b38a4c;
+  transform: translateY(-1px);
+}
+
+/* ====== LINK AL REGISTRO ====== */
+.link-registro {
+  margin-top: 2rem;
+  font-size: 1.1rem;
+  color: #c59d5f;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  transition: color 0.3s ease;
+}
+
+.link-registro:hover {
+  color: #b38a4c;
+}
+
+/* ====== ÍCONOS ====== */
+.fa-user, .fa-user-plus {
+  color: #c59d5f;
+}

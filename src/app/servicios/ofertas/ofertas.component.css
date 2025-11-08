@@ -1,0 +1,23 @@
+.tituloSecunIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  color: #f5f5f5;
+  margin-bottom: 48px;
+}
+
+.tituloSecunIcon i {
+  color: #c49b66; /* Dorado */
+  transition: transform 0.3s ease;
+}
+
+.tituloSecunIcon i:hover {
+  transform: scale(1.1);
+}
+
+.tituloSecunIcon h2 {
+  font-family: "Belgrano", serif;
+  font-size: 52px;
+  margin: 0;
+}

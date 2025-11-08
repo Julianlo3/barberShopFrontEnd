@@ -1,70 +1,58 @@
-<div id="cortes" class="container-fluid">
-  <div class="tituloSecunIcon">
+<div id="cortes" class="container-fluid text-center py-5">
+  <div class="tituloSecunIcon mb-4">
     <i class="fa-regular fa-hand-scissors fa-4x"></i>
     <h2>Cortes</h2>
   </div>
-  <p class="p-4">Rey & Cortes cuenta con los mejores cortes que se adecuan a cualquier estilo</p>
+  <p class="p-4 px-3 mx-auto" style="max-width: 800px;">
+    Rey & Cortes cuenta con los mejores cortes que se adecuan a cualquier estilo
+  </p>
 </div>
 
-<div id="cortesCards">
-<div class="container-fluid">
-  <ul class="nav justify-content-center">
-  <li class="nav-item">
-    <a class="nav-link active" aria-current="page" href="#">Clasico</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Moderno</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Militar</a>
-  </li>
-</ul>
+<div id="cortesCards" class="container-fluid mb-4">
+  <ul class="nav justify-content-center flex-wrap">
+    <li class="nav-item" *ngFor="let cat of Cortes">
+      <a class="nav-link"
+         [class.active]="cat.nombre === CorteSeleccionado"
+         (click)="seleccionarCorte(cat.nombre)">
+        {{ cat.nombre }}
+      </a>
+    </li>
+  </ul>
+</div>
 
-  <div class="card-group">
-    <div class="card">
-      <img ngSrc="http://localhost:8083/uploads/42b5cb17-fa96-48c4-8b77-5f4623fb4022_Requerimiento_2-Contenedor%20.png" class="imgCard card-img-top mx-auto" alt="..." height="512" width="512">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">$99.99</p>
-      </div>
-      <div class="card-footer">
-        <small class="text-body-secondary">Afro, delineado</small>
-      </div>
-    </div>
-    <div class="card">
-      <img ngSrc="assets/img/SinFoto.png" class="imgCard card-img-top mx-auto" alt="..." height="512" width="512">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">$99.99</p>
-      </div>
-      <div class="card-footer">
-        <small class="text-body-secondary">Linea</small>
-      </div>
-    </div>
-    <div class="card">
-      <img ngSrc="assets/img/SinFoto.png" class="imgCard card-img-top mx-auto" alt="..." height="512" width="512">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">$99.99</p>
-      </div>
-      <div class="card-footer">
-        <small class="text-body-secondary">Categoria</small>
+<div class="container-fluid">
+<div class="card-content">
+  <div *ngIf="Cortes.length > 0; else noCortes">
+    <div class="row g-4">
+      <div class="col-12 col-md-6 col-lg-4" *ngFor="let s of Cortes">
+        <div class="card shadow-sm mb-4">
+          <img [src]="'http://localhost:8083' + s.imagenURL" class="card-img-top img-fluid" alt="{{ s.nombre }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ s.nombre }}</h5>
+            <p class="card-text">{{ s.descripcion }}</p>
+            <p class="card-text fw-bold text-dark">$ {{ s.precio | number }}</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
-  <nav aria-label="Page navigation" class="p-4">
-    <ul class="pagination justify-content-center">
-      <li class="page-item">
-        <a class="page-link"><i class="fa-solid fa-arrow-left"></i> Anterior</a>
-      </li>
-      <li class="page-item"><a class="page-link" href="#">1</a></li>
-      <li class="page-item"><a class="page-link" href="#">2</a></li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
-      <li class="page-item">
-        <a class="page-link"> <i class="fa-solid fa-arrow-right"></i> Siguiente</a>
-      </li>
-    </ul>
-  </nav>
+  <ng-template #noCortes>
+    <p class="text-muted text-center">No hay Cortes registrados aún.</p>
+  </ng-template>
 </div>
 </div>
+
+<nav aria-label="Page navigation" class="p-4">
+  <ul class="pagination justify-content-center flex-wrap">
+    <li class="page-item">
+      <a class="page-link"><i class="fa-solid fa-arrow-left"></i> Anterior</a>
+    </li>
+    <li class="page-item"><a class="page-link">1</a></li>
+    <li class="page-item"><a class="page-link">2</a></li>
+    <li class="page-item"><a class="page-link">3</a></li>
+    <li class="page-item">
+      <a class="page-link">Siguiente <i class="fa-solid fa-arrow-right"></i></a>
+    </li>
+  </ul>
+</nav>

@@ -1,9 +1,11 @@
 export interface servicio {
+  id: string;
   nombre: string;
   descripcion: string;
   precio: number;
   createBy: string;
   estado: boolean;
   imagenURL: string;
-  categoriaID: string
+  categoriaId: string;
+  subcategoriaId: string;
 }

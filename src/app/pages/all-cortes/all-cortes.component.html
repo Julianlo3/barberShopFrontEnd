@@ -1,0 +1,41 @@
+<div id="cortes" class="container-fluid text-center py-5">
+  <div class="tituloSecunIcon mb-4">
+    <i class="fa-regular fa-hand-scissors fa-4x"></i>
+    <h2>Todos los Cortes</h2>
+  </div>
+</div>
+
+<div id="cortesCards" class="container-fluid mb-4">
+  <ul class="nav justify-content-center flex-wrap">
+    <li class="nav-item" *ngFor="let cat of Cortes">
+      <a class="nav-link"
+         [class.active]="cat.nombre === CorteSeleccionado"
+         (click)="seleccionarCorte(cat.nombre)">
+        {{ cat.nombre }}
+      </a>
+    </li>
+  </ul>
+</div>
+
+<div class="container-fluid">
+  <div class="card-content">
+    <div *ngIf="Cortes.length > 0; else noCortes">
+      <div class="row g-4">
+        <div class="col-12 col-md-4 col-xl-2-4" *ngFor="let s of Cortes">
+          <div class="card shadow-sm mb-4">
+            <img [src]="'http://localhost:8083' + s.imagenURL" class="card-img-top img-fluid" alt="{{ s.nombre }}">
+            <div class="card-body">
+              <h5 class="card-title">{{ s.nombre }}</h5>
+              <p class="card-text">{{ s.descripcion }}</p>
+              <p class="card-text fw-bold text-dark">$ {{ s.precio | number }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #noCortes>
+      <p class="text-muted text-center">No hay Cortes registrados aún.</p>
+    </ng-template>
+  </div>
+</div>

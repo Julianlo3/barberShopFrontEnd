@@ -1,0 +1,75 @@
+<div class="editar-container container py-4">
+  <h2 class="mb-4 text-center">Editar Servicio</h2>
+
+  <form #servicioFormActua="ngForm" (ngSubmit)="onSubmit(servicioFormActua)">
+    <div class="row g-3">
+
+      <!-- Nombre -->
+      <div class="col-12 col-md-6">
+        <label class="form-label">Nombre</label>
+        <input type="text" [(ngModel)]="servicio.nombre" name="nombre" required class="form-control" />
+      </div>
+
+      <!-- Precio -->
+      <div class="col-12 col-md-6">
+        <label class="form-label">Precio</label>
+        <input type="number" [(ngModel)]="servicio.precio" name="precio" required class="form-control" />
+      </div>
+
+      <!-- Descripción -->
+      <div class="col-12">
+        <label class="form-label">Descripción</label>
+        <textarea [(ngModel)]="servicio.descripcion" name="descripcion" required class="form-control"></textarea>
+      </div>
+
+      <!-- Estado -->
+      <div class="col-12 col-md-6">
+        <label class="form-label">Estado</label>
+        <select [(ngModel)]="servicio.estado" name="estado" class="form-select">
+          <option [value]="true">Activo</option>
+          <option [value]="false">Inactivo</option>
+        </select>
+      </div>
+
+      <!-- Categoría principal -->
+      <div class="col-12 col-md-6">
+        <label class="form-label">Categoría principal</label>
+        <select class="form-select" [(ngModel)]="servicio.categoriaId" name="categoriaId" required>
+          <option [ngValue]="null" disabled>Seleccione una categoría principal</option>
+          <option *ngFor="let categoria of categorias" [ngValue]="categoria.id">{{categoria.nombre}}</option>
+        </select>
+      </div>
+
+      <!-- Subcategoría -->
+      <div class="col-12 col-md-6">
+        <label class="form-label">Subcategoría</label>
+
+        <!-- SELECT de subcategorías existentes -->
+        <select
+          class="form-select"
+          [(ngModel)]="servicio.subcategoriaId"
+          name="subcategoriaId"
+        >
+          <option [ngValue]="null" disabled selected>Seleccione una subcategoría</option>
+          <option *ngFor="let sub of subcategorias" [ngValue]="sub.id">{{sub.nombre}}</option>
+
+        </select>
+
+      </div>
+
+      <!-- Imagen -->
+      <div class="col-12 col-md-6">
+        <label class="form-label">Imagen</label>
+        <input type="file" (change)="onFileSelected($event)" class="form-control mb-2" />
+        <img [src]="'http://localhost:8083' + servicio.imagenURL" class="img-fluid rounded" alt="{{ servicio.nombre }}">
+      </div>
+
+    </div> <!-- cierre row -->
+
+    <!-- Botones -->
+    <div class="mt-4 d-flex justify-content-center gap-3">
+      <button type="submit" class="btn btn-primary">Guardar cambios</button>
+      <button type="button" class="btn btn-secondary" (click)="cancelar()">Cancelar</button>
+    </div>
+  </form>
+</div>
