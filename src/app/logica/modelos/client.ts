@@ -1,4 +1,6 @@
 export interface client {
-  nombre: string;
-  correo: string;
+  name: string;
+  phone: string;
+  email: string;
+  password: string;
 }

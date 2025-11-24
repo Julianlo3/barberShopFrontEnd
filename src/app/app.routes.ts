@@ -11,6 +11,7 @@ import {AyudaComponent} from "./pages/ayuda/ayuda.component";
 import {ActualizarServicioComponent} from "./pages/admin/actualizar-servicio/actualizar-servicio.component";
 import {AllServicesComponent} from "./pages/all-services/all-services.component";
 import {AllCortesComponent} from "./pages/all-cortes/all-cortes.component";
+import {CategoryComponent} from "./pages/category/category.component";
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -25,5 +26,6 @@ export const routes: Routes = [
   { path: 'ayuda', component: AyudaComponent },
   { path: 'admin/actualizarServicio/:id', component: ActualizarServicioComponent },
   { path: 'allServices', component: AllServicesComponent },
-  { path: 'cortes', component: AllCortesComponent }
+  { path: 'cortes', component: AllCortesComponent },
+  { path: "category", component: CategoryComponent}
 ];

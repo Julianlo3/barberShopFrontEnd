@@ -1,5 +1,3 @@
-export interface Categoria {
-  id: String;
-  nombre: String;
-  subcategorias: any;
+export interface Category {
+  name: String;
 }

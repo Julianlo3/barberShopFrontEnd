@@ -1,6 +1,6 @@
 import { Component,OnInit } from '@angular/core';
 import {NgOptimizedImage} from "@angular/common";
-import {ServicioService} from "../logica/services/servicioService";
+import {ServicioService} from "../../logica/services/servicioService";
 import {CommonModule} from "@angular/common";
 
 

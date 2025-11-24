@@ -1,7 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import {DecimalPipe, NgOptimizedImage} from "@angular/common";
-import {ServicioService} from "../logica/services/servicioService";
-import {servicio} from "../logica/modelos/servicio";
+import {ServicioService} from "../../logica/services/servicioService";
+import {servicio} from "../../logica/modelos/servicio";
 import {CommonModule} from "@angular/common";
 
 

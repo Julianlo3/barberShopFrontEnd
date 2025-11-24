@@ -3,40 +3,46 @@
   <h2>Nuevo Barbero</h2>
 </div>
 
-<form (ngSubmit)="onSubmit()" class="form-barbero row g-3 mx-auto p-4">
-  <!-- Nombre completo -->
-  <div class="col-12 input-icon">
-    <i class="fa-solid fa-user"></i>
-    <input
-      type="text"
-      class="form-control"
-      id="newBarberoName"
-      [(ngModel)]="barbero.name"
-      name="name"
-      placeholder="Nombre completo"
-      required
-    />
+<form #BarberForm="ngForm"  (ngSubmit)="onSubmit()" class="form-barbero row g-3 w-50 mx-auto p-4">
+  <label for="newBarberName">Nombre completo</label>
+  <input type="text" class="form-control" id="newBarberName"
+         [(ngModel)]="barbero.name" name="nombre"
+         placeholder="Pepito bigotes" required minlength="4" #nombreCompleto="ngModel">
+  <div class="alert alert-danger" *ngIf="nombreCompleto.invalid && (nombreCompleto.dirty || nombreCompleto.touched)">
+    <div *ngIf="nombreCompleto.errors?.['required']">El nombre completo es obligatorio</div>
+    <div *ngIf="nombreCompleto.errors?.['minlength']">El nombre completo debe tener al menos 4 carácteres</div>
   </div>
 
-  <!-- Correo y Clave -->
-  <div class="col-md-12 input-icon">
-    <i class="fa-solid fa-envelope"></i>
-    <input
-      type="email"
-      class="form-control"
-      id="newBarberoEmail"
-      [(ngModel)]="barbero.correo"
-      name="correo"
-      placeholder="Correo electrónico"
-      required
-    />
+  <label for="celBarber">Teléfono celular</label>
+  <input type="tel" class="form-control" id="celBarber"
+         [(ngModel)]="barbero.phone" name="cel"
+         placeholder="317XXXXXXX" required minlength="10" maxlength="10"  pattern="^[0-9]*$" #cel="ngModel">
+  <div class="alert alert-danger" *ngIf="cel.invalid && (cel.dirty || cel.touched)">
+    <div *ngIf="cel.errors?.['required']">El teléfono es obligatorio</div>
+    <div *ngIf="cel.errors?.['minlength']">El teléfono debe tener 10 dígitos</div>
+    <div *ngIf="cel.errors?.['pattern']">El teléfono no puede tener signos ni números negativos</div>
   </div>
 
+  <div class="col-md-6">
+    <label for="newBarberEmail" class="form-label">Correo electrónico</label>
+    <input type="email" class="form-control" id="newBarberEmail" [(ngModel)]="barbero.email" name="correo"
+           placeholder="bigotes@gmail.com" #correo="ngModel" email required>
+    <div class="alert alert-danger" *ngIf="correo.invalid && (correo.dirty || correo.touched)">
+      <div *ngIf="correo.errors?.['required']">El correo es obligatorio</div>
+      <div *ngIf="correo.errors?.['email']">El tipo de correo es invalido</div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <label for="claveBarber" class="form-label">Clave</label>
+    <input type="password" class="form-control" id="claveBarber" [(ngModel)]="barbero.password" name="clave"
+           placeholder="bigotes no puede ver tu clave" #clave="ngModel" minlength="7" maxlength="10" required>
+    <div class="alert alert-danger" *ngIf="clave.invalid && (clave.dirty || clave.touched)">
+      <div *ngIf="clave.errors?.['required']">La clave es obligatoria</div>
+      <div *ngIf="clave.errors?.['minlength']">La clave debe tener al menos 7 carácteres y máximo 10</div>
+    </div>
+  </div>
 
-  <!-- Botón -->
-  <div class="col-12 text-center mt-4">
-    <button id="btnCrearBarbero" type="submit" class="btn btn-primary">
-      <i class="fa-solid fa-user-check"></i> Crear cuenta
-    </button>
+  <div class="col-12 row justify-content-center mt-4">
+    <button id="btnCrearBarbero" type="submit" role="button" class="btn btn-primary" [disabled]="!BarberForm.form.valid" >Crear barbero</button>
   </div>
 </form>

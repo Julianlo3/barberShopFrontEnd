@@ -1,4 +1,6 @@
 export interface Barbero {
   name: string;
-  correo: string;
+  phone: string;
+  email: string;
+  password: string;
 }

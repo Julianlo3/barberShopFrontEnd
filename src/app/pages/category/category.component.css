@@ -1,0 +1,73 @@
+.category-container {
+  max-width: 600px;
+  margin: 50px auto;
+  background-color: #1e1e1e;
+  color: #fff;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(197, 157, 95, 0.3);
+}
+
+/* ---------------------- */
+/* HEADER DEL ACORDEÓN    */
+/* ---------------------- */
+.accordion-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: #2a2a2a;
+  padding: 15px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  border: 1px solid #c59d5f;
+}
+
+.accordion-header:hover {
+  background: #353535;
+}
+
+.accordion-header i {
+  font-size: 2.5rem;
+  color: #c59d5f;
+}
+
+.accordion-header h2 {
+  color: #c59d5f;
+  margin: 0;
+}
+
+.accordion-header p {
+  margin: 0;
+  font-size: 13px;
+  color: #e0e0e0;
+}
+
+/* ---------------------- */
+/* CONTENIDO DEL ACORDEÓN */
+/* ---------------------- */
+.card-content {
+  margin-top: 15px;
+  padding: 15px;
+  background: #2a2a2a;
+  border-radius: 12px;
+  border: 1px solid #c59d5f;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Cartas de categorías */
+.card {
+  border-radius: 12px;
+  background: #fff !important;
+  color: #000;
+}
+
+.card-footer .btn {
+  font-size: 12px;
+  padding: 5px 10px;
+}

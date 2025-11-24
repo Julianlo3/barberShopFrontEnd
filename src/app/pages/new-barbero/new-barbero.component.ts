@@ -18,7 +18,9 @@ import {AlertService} from "../../logica/services/alertService";
 export class NewBarberoComponent {
   barbero: Barbero ={
     name:'',
-    correo:''
+    phone:'',
+    email:'',
+    password:''
   }
 
   constructor(

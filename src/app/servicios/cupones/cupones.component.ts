@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {EnConstruccionComponent} from "../../en-construccion/en-construccion.component";
+import {EnConstruccionComponent} from "../../component/en-construccion/en-construccion.component";
 
 @Component({
   selector: 'app-cupones',

@@ -1,7 +1,7 @@
 <section id="nueva-cita">
   <div class="tituloSecunIcon">
     <i class="fa-solid fa-hand-point-up fa-4x"></i>
-    <h2>Nueva cita</h2>
+    <h2>Tu reserva</h2>
   </div>
 
   <div class="row justify-content-center align-items-center contenido-cita">
@@ -60,9 +60,9 @@
           />
         </div>
         <div class="col-6">
-          <label for="horaCita" class="form-label">Hora cita</label>
+          <label for="horaCita" class="form-label">Servicios seleccionados </label>
           <input
-            type="time"
+            type="text"
             id="horaCita"
             class="form-control"
             [(ngModel)]="cita.horaCita"
@@ -73,8 +73,11 @@
       </div>
 
       <div class="text-center">
-        <button type="submit" class="btn btn-primary px-4 py-2">
+        <button type="submit" class="btn btn-primary px-4 py-2 m-2">
           Agendar cita
+        </button>
+        <button type="submit" class="btn btn-primary px-4 py-2">
+          Eliminar cita
         </button>
       </div>
     </form>

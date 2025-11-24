@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {CommonModule, DecimalPipe, NgForOf, NgIf} from "@angular/common";
-import {Categoria} from "../../logica/modelos/categoria";
+import {Category} from "../../logica/modelos/categoria";
 import {ServicioService} from "../../logica/services/servicioService";
 import {HttpClientModule} from "@angular/common/http";
 import {servicio} from "../../logica/modelos/servicio";

@@ -5,7 +5,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { CommonModule } from "@angular/common";
 import { ServicioService } from "../../../logica/services/servicioService";
 import { AlertService } from "../../../logica/services/alertService";
-import { Categoria } from "../../../logica/modelos/categoria";
+import { Category } from "../../../logica/modelos/categoria";
 import { Router } from "@angular/router";
 import {SubCategoria} from "../../../logica/modelos/subCategoria";
 

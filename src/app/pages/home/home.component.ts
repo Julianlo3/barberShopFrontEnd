@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import {CortesComponent} from "../../cortes/cortes.component";
-import {ServiciosComponent} from "../../servicios/servicios.component";
-import {ReservasComponent} from "../../reservas/reservas.component";
-import {NuestrosBarberosComponent} from "../../nuestros-barberos/nuestros-barberos.component";
+import {CortesComponent} from "../../component/cortes/cortes.component";
+import {ServiciosComponent} from "../../component/servicios/servicios.component";
+import {ReservasComponent} from "../../component/reservas/reservas.component";
+import {NuestrosBarberosComponent} from "../../component/nuestros-barberos/nuestros-barberos.component";
 
 @Component({
   selector: 'app-home',

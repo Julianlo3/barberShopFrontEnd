@@ -1,0 +1,93 @@
+<div class="tituloSecunIcon mb-4 text-center">
+  <i class="fa-regular fa-bookmark fa-4x"></i>
+  <h2>Categoría de Servicios</h2>
+</div>
+
+<div class="category-container accordion-container">
+
+  <!-- CARD 1 -->
+  <div class="accordion-card" [class.active]="activeCard === 1">
+    <div class="accordion-header" (click)="toggleCard(1)">
+      <i class="fa-solid fa-plus-circle"></i>
+      <h2>Agregar Categorías</h2>
+      <p>Agregue categorías para sus servicios</p>
+    </div>
+
+    <div class="card-content" *ngIf="activeCard === 1">
+      <form #categoryForm="ngForm">
+
+        <div class="mb-3">
+          <label class="form-label" for="nombreCategoria">Nombre de la categoría</label>
+
+          <input type="text"
+                 class="form-control"
+                 id="nombreCategoria"
+                 name="nombreCategoria"
+                 placeholder="Ej: Corte moderno"
+                 [(ngModel)]="category.name"
+                 #nombreCategoria="ngModel"
+                 required minlength="4">
+
+          <!-- Validación -->
+          <div class="alert alert-danger mt-2"
+               *ngIf="nombreCategoria.invalid && (nombreCategoria.dirty || nombreCategoria.touched)">
+
+            <div *ngIf="nombreCategoria.errors?.['required']">
+              El nombre es obligatorio.
+            </div>
+
+            <div *ngIf="nombreCategoria.errors?.['minlength']">
+              El nombre debe tener mínimo 4 caracteres.
+            </div>
+          </div>
+        </div>
+
+        <button type="button"
+                class="btn btn-primary w-100 mt-3"
+                [disabled]="categoryForm.invalid">
+          Guardar Categoría
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- CARD 2 -->
+  <div class="accordion-card" [class.active]="activeCard === 2">
+    <div class="accordion-header" (click)="toggleCard(2)">
+      <i class="fa-solid fa-list"></i>
+      <h2>Listar Categorías</h2>
+      <p>Mira todas las categorías disponibles</p>
+    </div>
+
+    <div class="card-content" *ngIf="activeCard === 2">
+      <div *ngIf="Categories.length > 0; else noCategorias">
+        <div class="row justify-content-center">
+
+          <div class="col-md-4" *ngFor="let s of Categories">
+            <div class="card shadow-sm mb-4">
+              <div class="card-body">
+                <h5 class="card-title">{{ s.name }}</h5>
+              </div>
+
+              <div class="card-footer d-flex justify-content-between">
+                <button class="btn btn-outline-dark btn-sm">
+                  <i class="fa-solid fa-pen-to-square"></i> Editar
+                </button>
+
+                <button class="btn btn-outline-danger btn-sm">
+                  <i class="fa-solid fa-trash"></i> Eliminar
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <ng-template #noCategorias>
+        <p class="text-muted text-center">No hay categorías registradas aún.</p>
+      </ng-template>
+    </div>
+  </div>
+
+</div>
