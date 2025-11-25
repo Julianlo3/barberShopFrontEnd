@@ -1,3 +1,4 @@
 export interface Category {
-  name: String;
+  nombre: String;
+  createdBy: String;
 }

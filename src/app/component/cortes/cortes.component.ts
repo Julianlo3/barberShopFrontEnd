@@ -8,7 +8,7 @@ import {CommonModule} from "@angular/common";
   selector: 'app-cortes',
   standalone: true,
   imports: [
-    NgOptimizedImage,CommonModule,
+    CommonModule,
   ],
   templateUrl: './cortes.component.html',
   styleUrl: './cortes.component.css'
@@ -30,7 +30,7 @@ export class CortesComponent implements OnInit{
         this.Cortes = data.slice(0, 3);
       },
       error: (err) => {
-        console.error('Error al obtener cortes:', err);
+        console.error('Error al obtener cortes:');
       }
     });
   }

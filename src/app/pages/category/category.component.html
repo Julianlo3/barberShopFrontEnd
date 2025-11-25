@@ -5,7 +5,6 @@
 
 <div class="category-container accordion-container">
 
-  <!-- CARD 1 -->
   <div class="accordion-card" [class.active]="activeCard === 1">
     <div class="accordion-header" (click)="toggleCard(1)">
       <i class="fa-solid fa-plus-circle"></i>
@@ -24,11 +23,10 @@
                  id="nombreCategoria"
                  name="nombreCategoria"
                  placeholder="Ej: Corte moderno"
-                 [(ngModel)]="category.name"
+                 [(ngModel)]="category.nombre"
                  #nombreCategoria="ngModel"
                  required minlength="4">
 
-          <!-- Validación -->
           <div class="alert alert-danger mt-2"
                *ngIf="nombreCategoria.invalid && (nombreCategoria.dirty || nombreCategoria.touched)">
 
@@ -44,14 +42,13 @@
 
         <button type="button"
                 class="btn btn-primary w-100 mt-3"
-                [disabled]="categoryForm.invalid">
+                [disabled]="categoryForm.invalid" (click)="onSubmit()" >
           Guardar Categoría
         </button>
       </form>
     </div>
   </div>
 
-  <!-- CARD 2 -->
   <div class="accordion-card" [class.active]="activeCard === 2">
     <div class="accordion-header" (click)="toggleCard(2)">
       <i class="fa-solid fa-list"></i>
@@ -66,7 +63,7 @@
           <div class="col-md-4" *ngFor="let s of Categories">
             <div class="card shadow-sm mb-4">
               <div class="card-body">
-                <h5 class="card-title">{{ s.name }}</h5>
+                <h5 class="card-title">{{ s.nombre }}</h5>
               </div>
 
               <div class="card-footer d-flex justify-content-between">
@@ -85,7 +82,7 @@
       </div>
 
       <ng-template #noCategorias>
-        <p class="text-muted text-center">No hay categorías registradas aún.</p>
+        <p class="text-muted text-center">No hay categorías registradas aún tite.</p>
       </ng-template>
     </div>
   </div>

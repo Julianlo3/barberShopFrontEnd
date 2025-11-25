@@ -9,7 +9,6 @@ import {CommonModule} from "@angular/common";
   selector: 'app-servicios',
   standalone: true,
   imports: [
-    NgOptimizedImage,
     DecimalPipe,
     CommonModule,
   ],
@@ -22,9 +21,11 @@ export class ServiciosComponent {
   constructor(private servicioService: ServicioService) {}
 
   ngOnInit(): void {
-    this.servicioService.getServiciosByCategoriaId("2").subscribe(servicios => {
-      // solo los 3 primeros
-      this.serviciosLimitados = servicios.slice(0, 3);
+    this.servicioService.getServiciosByCategoriaId("2").subscribe( {
+      next: (servicios) =>{
+        this.serviciosLimitados = servicios.slice(0, 3);
+      },
+      error: () => {console.error('Error al obtener servicios:')}
     });
   }
 }
