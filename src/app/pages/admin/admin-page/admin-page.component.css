@@ -1,0 +1,92 @@
+/* ----------- ESTILO GENERAL DE TÍTULOS E ICONOS ----------- */
+.tituloSecunIcon i,
+.tituloSecunIcon h2 {
+  color: white;
+  transition: color 0.3s ease;
+}
+
+.tituloSecunIcon i:hover,
+.tituloSecunIcon h2:hover {
+  color: #c59d5f;
+}
+.fa-regular{
+  color: #ffd700;
+}
+
+.tituloSecunIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #f5f5f5;
+}
+
+.card {
+  background-color: #1e1e1e;        /* mismo color de fondo que el formulario */
+  color: #f5f5f5;
+  border-radius: 15px;
+  border: 1px solid #444;
+  box-shadow: 0 0 20px rgba(0,0,0,0.6);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  border-color: #c59d5f;
+  box-shadow: 0 0 25px rgba(197,157,95,0.3);
+  transform: translateY(-5px);
+}
+
+/* ----------- CONTENIDO DE TARJETA ----------- */
+.card-title {
+  color: white;
+  transition: color .3s ease;
+}
+
+.card-title:hover {
+  color: #c59d5f;
+}
+
+.card-text {
+  color: #ddd;
+}
+
+/* ----------- BOTONES ----------- */
+.btn-primary {
+  background-color: #c59d5f;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: all .3s ease;
+  color: #1e1e1e;
+}
+
+.btn-primary:hover {
+  background-color: #d4b06a;
+  transform: scale(1.05);
+}
+
+.btn-secondary {
+  background-color: #2a2a2a;
+  border: 1px solid #c59d5f;
+  color: #c59d5f;
+  padding: 10px 25px;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: all .3s ease;
+}
+
+.btn-secondary:hover {
+  background-color: #3a3a3a;
+  transform: scale(1.05);
+  color: #e0c08a;
+  border-color: #d4b06a;
+}
+
+/* ----------- ESTRUCTURA ----------- */
+.container {
+  max-width: 1200px;
+}
+
+.row {
+  margin-bottom: 25px;
+}

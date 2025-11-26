@@ -1,13 +1,13 @@
 import { Component, ElementRef, AfterViewInit, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule, NgForm } from "@angular/forms";
-import { servicio } from "../../../logica/modelos/servicio";
+import { servicio } from "../../../../logica/modelos/servicio";
 import { HttpClientModule } from "@angular/common/http";
 import { CommonModule } from "@angular/common";
-import { ServicioService } from "../../../logica/services/servicioService";
-import { AlertService } from "../../../logica/services/alertService";
-import { Category } from "../../../logica/modelos/categoria";
+import { ServicioService } from "../../../../logica/services/servicioService";
+import { AlertService } from "../../../../logica/services/alertService";
+import { Category } from "../../../../logica/modelos/categoria";
 import { Router } from "@angular/router";
-import {SubCategoria} from "../../../logica/modelos/subCategoria";
+import {SubCategoria} from "../../../../logica/modelos/subCategoria";
 
 @Component({
   selector: 'app-gestionar-servicios',

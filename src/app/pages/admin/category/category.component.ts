@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgIf,NgForOf} from "@angular/common";
-import {Category} from "../../logica/modelos/categoria";
-import {CategoryService} from "../../logica/services/categoryService";
-import {AlertService} from "../../logica/services/alertService";
+import {Category} from "../../../logica/modelos/categoria";
+import {CategoryService} from "../../../logica/services/categoryService";
+import {AlertService} from "../../../logica/services/alertService";
 import {HttpClientModule} from "@angular/common/http";
 
 @Component({

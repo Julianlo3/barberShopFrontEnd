@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ServicioService } from '../../../logica/services/servicioService';
-import { AlertService } from '../../../logica/services/alertService';
-import { servicio } from '../../../logica/modelos/servicio';
+import { ServicioService } from '../../../../logica/services/servicioService';
+import { AlertService } from '../../../../logica/services/alertService';
+import { servicio } from '../../../../logica/modelos/servicio';
 import { NgForm } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
