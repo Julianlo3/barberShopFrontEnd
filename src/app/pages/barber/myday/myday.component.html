@@ -1,0 +1,54 @@
+<div class="tituloSecunIcon">
+  <i class="fa-brands fa-black-tie fa-4x"></i>
+  <h2>Mi día</h2>
+</div>
+
+<div>
+
+  <div id="infoBarbero">
+    <h2>Hola Julian</h2>
+  </div>
+
+  <h2 class="tituloSecunIcon mb-4">
+    Servicios para el día de hoy
+  </h2>
+
+  <div class="timeline">
+    <div class="hour-block" *ngFor="let h of horas">
+
+      <div class="hour-label">{{ h.label }}</div>
+
+      <div class="slots">
+        <div class="slot-wrapper" *ngFor="let s of h.slots; let i = index">
+
+          <!-- Cuadro -->
+          <div class="slot" [ngClass]="s.estado">
+            <div class="slot-info" *ngIf="s.cliente">
+              <strong>{{ s.cliente }}</strong><br>
+              <span *ngFor="let serv of s.servicios">
+              - {{ serv }}<br>
+            </span>
+            </div>
+          </div>
+
+          <!-- Etiqueta del segmento -->
+          <div class="slot-label">
+            {{ getSegmentLabel(i) }}
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+
+  <!-- Leyenda -->
+  <div class="leyenda">
+    <div><span class="cuadro disponible"></span>Disponible</div>
+    <div><span class="cuadro ocupado"></span>Ocupado</div>
+    <div><span class="cuadro pendiente"></span>Pendiente</div>
+    <div><span class="cuadro ahora"></span>Ahora</div>
+  </div>
+
+  </div>
+</div>

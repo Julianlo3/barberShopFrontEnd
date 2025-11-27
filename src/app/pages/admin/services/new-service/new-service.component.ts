@@ -2,29 +2,33 @@ import {AfterViewInit, Component, ElementRef, OnInit} from '@angular/core';
 import {FormsModule, NgForm} from "@angular/forms";
 import {NgForOf, NgIf} from "@angular/common";
 import {ServicioService} from "../../../../logica/services/servicioService";
-import {Router} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 import {service} from "../../../../logica/modelos/servicio";
 import {AlertService} from "../../../../logica/services/alertService";
 
 @Component({
   selector: 'app-new-service',
   standalone: true,
-    imports: [
-        FormsModule,
-        NgForOf,
-        NgIf
-    ],
+  imports: [
+    FormsModule,
+    NgForOf,
+    NgIf,
+    RouterLink
+  ],
   templateUrl: './new-service.component.html',
   styleUrl: './new-service.component.css'
 })
-export class NewServiceComponent implements AfterViewInit, OnInit{
+export class NewServiceComponent implements AfterViewInit{
 
   public categorias: any[] = [];
   public servicios: service[] = [];
+  public categoryDisponibility: boolean = false;
+
   selectedFile: File | null = null;
   preview: string | ArrayBuffer | null = null;
 
   servicio: service = {
+    id: -1,
     name: "",
     desciption: "",
     duration: 0,
@@ -32,6 +36,7 @@ export class NewServiceComponent implements AfterViewInit, OnInit{
     price: 0,
     available: false,
     imagenURL: "",
+    categoryID:-1
   };
 
 
@@ -44,12 +49,17 @@ export class NewServiceComponent implements AfterViewInit, OnInit{
 
   ngOnInit(): void {
     this.cargarCategorias();
+    console.log("estado de disponibilidad de categorias: ", this.categoryDisponibility);
   }
 
   cargarCategorias() {
-    this.servicioService.getCategorias().subscribe(
-      categorias => this.categorias = categorias
-    );
+    this.servicioService.getCategorias().subscribe({
+      next: (categorias) =>{
+        this.categoryDisponibility = true;
+        this.categorias = categorias
+      },
+      error: () => console.error('Error al obtener categorias:')
+    })
   }
 
   cargarServicios() {

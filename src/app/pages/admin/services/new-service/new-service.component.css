@@ -1,0 +1,131 @@
+/* ====== Contenedor general ====== */
+:host {
+  display: block;
+  padding: 20px;
+  font-family: "Lato", sans-serif;
+  animation: fadeInUp 0.4s ease;
+}
+
+/* ====== Título con ícono ====== */
+.tituloSecunIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 15px;
+  color: #c59d5f;
+}
+
+.tituloSecunIcon i {
+  font-size: 3.5rem;
+  color: #c59d5f;
+}
+
+.tituloSecunIcon h2 {
+  font-weight: 700;
+  color: #333;
+}
+
+/* ====== Descripción ====== */
+.form-description {
+  text-align: center;
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+  color: #555;
+}
+
+/* ====== Tarjeta del formulario ====== */
+.card-content {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+  max-width: 650px;
+  margin: auto;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  animation: fadeInUp 0.4s ease;
+}
+
+/* ====== Labels ====== */
+.form-label {
+  font-weight: 600;
+  color: #2a2a2a;
+}
+
+/* ====== Inputs ====== */
+.form-control,
+.form-select,
+textarea {
+  border-radius: 8px;
+  padding: 10px;
+  border: 1px solid #bbb;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  font-family: "Lato", sans-serif;
+}
+
+.form-control:focus,
+.form-select:focus,
+textarea:focus {
+  border-color: #c59d5f;
+  box-shadow: 0 0 0 0.15rem rgba(197, 157, 95, 0.25);
+}
+
+/* ====== Vista previa de imagen ====== */
+.img-thumbnail {
+  border-radius: 10px;
+  margin-top: 10px;
+  border: 2px solid #c59d5f;
+}
+
+/* ====== Checkbox ====== */
+.form-check-label {
+  user-select: none;
+}
+
+/* ====== Botón Guardar ====== */
+.btn-primary {
+  width: 100%;
+  font-size: 1.1rem;
+  padding: 12px;
+  border-radius: 10px;
+  background-color: #2a2a2a;
+  border: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: #c59d5f;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* ====== Animación estilo sitio ====== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ====== Responsivo ====== */
+@media (max-width: 576px) {
+  .card-content {
+    padding: 18px;
+  }
+
+  .tituloSecunIcon i {
+    font-size: 2.8rem;
+  }
+
+  .tituloSecunIcon h2 {
+    font-size: 1.5rem;
+  }
+}

@@ -1,68 +1,36 @@
+<div class="tituloSecunIcon">
 <i class="fa-solid fa-plus-circle fa-4x"></i>
 <h2>Agregar Servicios</h2>
 <p>Agregue nuevos servicios a la barbería</p>
+</div>
 
 <div class="card-content">
-  <form #servicioForm="ngForm" (ngSubmit)="onSubmit(servicioForm)">
+  <form #servicioForm="ngForm" (ngSubmit)="onSubmit(servicioForm)" >
     <div class="mb-3">
       <label class="form-label">Nombre del servicio</label>
       <input type="text" class="form-control" placeholder="Ej: Corte clásico"
-             [(ngModel)]="servicio.nombre" name="nombre" required>
+             [(ngModel)]="servicio.name" name="nombre" required>
     </div>
 
     <div class="mb-3">
       <label class="form-label">Categoría principal</label>
-      <select class="form-select" [(ngModel)]="servicio.categoriaId" name="categoriaId" required>
+      <select class="form-select" [(ngModel)]="servicio.categoryID" name="categoriaId" required>
         <option [ngValue]="null" disabled>Seleccione una categoría principal</option>
         <option *ngFor="let categoria of categorias" [ngValue]="categoria.id">{{ categoria.nombre }}
         </option>
       </select>
     </div>
 
-
-    <div class="mb-5 row">
-      <div class="col-md-6">
-        <label class="form-label">Subcategoría</label>
-
-        <!-- SELECT de subcategorías existentes -->
-        <select
-          class="form-select"
-          [(ngModel)]="servicio.subcategoriaId"
-          name="subcategoriaId"
-          (change)="onChangeSubcategoria()"
-          *ngIf="!mostrarInput"
-        >
-          <option [ngValue]="null" disabled selected>Seleccione una subcategoría</option>
-          <option *ngFor="let categoria of subcategorias" [ngValue]="categoria.id">{{ categoria.nombre }}
-          <option value="nuevo">➕ Nueva subcategoría</option>
-        </select>
-
-        <!-- INPUT para nueva subcategoría -->
-        <div *ngIf="mostrarInput" class="mt-2">
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Ingrese el nombre de la nueva subcategoría"
-            [(ngModel)]="servicio.subcategoriaId"
-            name="subcategoria"
-          />
-          <button type="button" class="btn btn-outline-secondary mt-2" (click)="cancelarNuevaSub()">
-            Cancelar
-          </button>
-        </div>
-      </div>
-    </div>
-
     <div class="mb-3">
       <label class="form-label">Descripción</label>
       <textarea class="form-control" rows="3" placeholder="Describe el servicio..."
-                [(ngModel)]="servicio.descripcion" name="descripcion" required></textarea>
+                [(ngModel)]="servicio.desciption" name="descripcion" required></textarea>
     </div>
 
     <div class="mb-3">
       <label class="form-label">Precio</label>
       <input type="number" class="form-control" placeholder="Ej: 25000"
-             [(ngModel)]="servicio.precio" name="precio" required>
+             [(ngModel)]="servicio.price" name="precio" required>
     </div>
 
     <div class="mb-3">
@@ -88,6 +56,10 @@
       <label class="form-check-label" for="activo">'¿Servicio disponible?'</label>
     </div>
 
-    <button type="submit" class="btn btn-primary">Guardar Servicio</button>
+    <button type="submit" class="btn btn-primary" [disabled]="!categoryDisponibility">Guardar Servicio</button>
+    <div class="alert alert-danger m-2" *ngIf=!categoryDisponibility>
+      <div>No se pueden guardar servicios hasta que se cree al menos una categoría</div>
+      <button routerLink="admin/category" class="btn btn-primary">Crear categoría</button>
+      </div>
   </form>
 </div>
