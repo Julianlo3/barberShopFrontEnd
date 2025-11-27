@@ -1,0 +1,10 @@
+.chart-container {
+  width: 400px;     /* Ancho fijo */
+  height: 300px;    /* Alto fijo */
+}
+
+canvas {
+  background: #1e1e1e;        /* Fondo */
+  border-radius: 10px;        /* Bordes redondeados */
+  padding: 10px;              /* Espacio interno */
+}
