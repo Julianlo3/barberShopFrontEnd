@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import {CommonModule, DecimalPipe, NgForOf, NgIf} from "@angular/common";
-import {Category} from "../../logica/modelos/categoria";
-import {ServicioService} from "../../logica/services/servicioService";
+import {Category} from "../../../logica/modelos/category";
+import {ServicioService} from "../../../logica/services/servicioService";
 import {HttpClientModule} from "@angular/common/http";
-import {servicio} from "../../logica/modelos/servicio";
+import {service} from "../../../logica/modelos/servicio";
 
 
 @Component({
@@ -23,18 +23,18 @@ export class AllServicesComponent {
 
   categorias: any[] = []; // Aquí se guardarán las categorías
   categoriaSeleccionada: string = ''; // Para manejar la selección
-  public servicios: servicio[] = [];
+  public servicios: service[] = [];
 
-  servicio: servicio = {
-    id:'',
-    nombre: '',
-    descripcion: '',
-    precio: 0,
-    createBy: "admin",
-    estado: true,
-    imagenURL: '',
-    categoriaId: "-1",
-    subcategoriaId: '1'
+  servicio: service = {
+    id:-1,
+    name: "",
+    desciption: "",
+    duration: 0,
+    category: "",
+    price: 0,
+    available: false,
+    imagenURL: "",
+    categoryID:-1
   };
 
   constructor(

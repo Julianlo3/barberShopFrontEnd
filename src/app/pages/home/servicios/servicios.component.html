@@ -21,15 +21,15 @@
            [class.active]="i === 0">
         <img [src]="'http://localhost:8083' + servicio.imagenURL"
              class="d-block w-100"
-             alt="{{ servicio.nombre }}"
+             alt="{{ servicio.name }}"
              height="512"
              width="512"
              onerror="this.src='assets/img/SinFoto.png'">
 
         <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-75 rounded p-3">
-          <h5>{{ servicio.nombre }}</h5>
-          <p>{{ servicio.descripcion }}</p>
-          <p class="precio">${{ servicio.precio | number:'1.0-0' }}</p>
+          <h5>{{ servicio.name }}</h5>
+          <p>{{ servicio.desciption }}</p>
+          <p class="precio">${{ servicio.price | number:'1.0-0' }}</p>
         </div>
       </div>
     </div>

@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import {Barbero} from "../../logica/modelos/barbero";
-import {BarberoService} from "../../logica/services/barberoService";
+import {Barbero} from "../../../logica/modelos/barbero";
+import {BarberoService} from "../../../logica/services/barberoService";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {CommonModule} from "@angular/common";
-import {AlertService} from "../../logica/services/alertService";
+import {AlertService} from "../../../logica/services/alertService";
 
 @Component({
   selector: 'app-new-barbero',
@@ -17,6 +17,7 @@ import {AlertService} from "../../logica/services/alertService";
 })
 export class NewBarberoComponent {
   barbero: Barbero ={
+    id:-1,
     name:'',
     phone:'',
     email:'',

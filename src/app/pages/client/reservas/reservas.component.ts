@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {AlertService} from "../../logica/services/alertService";
+import {AlertService} from "../../../logica/services/alertService";
 import {HttpClientModule} from "@angular/common/http";
-import {cita} from "../../logica/modelos/cita";
-import {citaService} from "../../logica/services/citasService";
+import {cita} from "../../../logica/modelos/cita";
+import {citaService} from "../../../logica/services/citasService";
 import {NgOptimizedImage} from "@angular/common";
 
 @Component({

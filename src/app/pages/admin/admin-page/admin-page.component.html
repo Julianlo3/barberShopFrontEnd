@@ -15,22 +15,13 @@
     <div class="col-sm-6 col-md-4 mb-3">
       <div class="card h-100">
         <div class="card-body">
-          <h5 class="card-title">Agregar categorías</h5>
-          <p class="card-text">Agregue todas las categorías necesarias para gestionar los servicios de la barbería</p>
-          <button class="btn btn-primary" routerLink="/category">Agregar categorías</button>
+          <h5 class="card-title">Administrar categorías</h5>
+          <p class="card-text">Administre las categrías de la barbería: Agregue, edite y elimine.</p>
+          <button class="btn btn-primary" routerLink="admin/category">Agregar categorías</button>
         </div>
       </div>
     </div>
 
-    <div class="col-sm-6 col-md-4 mb-3">
-      <div class="card h-100">
-        <div class="card-body">
-          <h5 class="card-title">Ver categorías</h5>
-          <p class="card-text">Liste todas las categorías existentes para poder actualizarlas o eliminarlas.</p>
-          <button class="btn btn-secondary">Ver categorías</button>
-        </div>
-      </div>
-    </div>
 
   </div>
   <div class="tituloSecunIcon mb-4">
@@ -40,13 +31,12 @@
 
 
   <div class="row justify-content-center">
-
     <div class="col-sm-6 col-md-4 mb-3">
       <div class="card h-100">
         <div class="card-body">
           <h5 class="card-title">Agregar Servicios</h5>
           <p class="card-text">Agregue todos los servicios que la barbería ofrecerá</p>
-          <button class="btn btn-primary" routerLink="/admin/gestionarServicios">Agregar servicios</button>
+          <button class="btn btn-primary" routerLink="/service/new">Agregar servicios</button>
         </div>
       </div>
     </div>
@@ -56,7 +46,7 @@
         <div class="card-body">
           <h5 class="card-title">Ver Servicios</h5>
           <p class="card-text">Liste todas los servicios existentes para poder actualizarlos o eliminarlos.</p>
-          <button class="btn btn-secondary">Ver Servicios</button>
+          <button class="btn btn-secondary" routerLink="service/list" >Ver Servicios</button>
         </div>
       </div>
     </div>
@@ -85,7 +75,7 @@
         <div class="card-body">
           <h5 class="card-title">Ver barberos</h5>
           <p class="card-text">Liste todas los barberos existentes para poder actualizarlos o eliminarlos.</p>
-          <button class="btn btn-secondary">Ver barberos</button>
+          <button class="btn btn-secondary" routerLink="admin/listBarber">Ver barberos</button>
         </div>
       </div>
     </div>

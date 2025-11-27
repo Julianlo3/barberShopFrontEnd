@@ -1,11 +1,11 @@
-export interface servicio {
-  id: string;
-  nombre: string;
-  descripcion: string;
-  precio: number;
-  createBy: string;
-  estado: boolean;
+export interface service {
+  id: number;
+  name: string;
+  desciption: string;
+  duration: number;
+  category: string;
+  price: number;
+  available: boolean;
   imagenURL: string;
-  categoriaId: string;
-  subcategoriaId: string;
+  categoryID: number;
 }

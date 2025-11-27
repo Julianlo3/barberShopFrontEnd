@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import {FormsModule} from "@angular/forms";
-import {client} from "../../logica/modelos/client";
+import {client} from "../../../logica/modelos/client";
 import {NgClass, NgIf} from "@angular/common";
 import {HttpClientModule} from "@angular/common/http";
-import {AlertService} from "../../logica/services/alertService";
-import {ClientService} from "../../logica/services/clientService";
+import {AlertService} from "../../../logica/services/alertService";
+import {ClientService} from "../../../logica/services/clientService";
 
 @Component({
   selector: 'app-new-user',
@@ -17,6 +17,7 @@ import {ClientService} from "../../logica/services/clientService";
 })
 export class NewUserComponent {
   Client: client ={
+    id:-1,
     name:'',
     phone:'',
     email:'',
