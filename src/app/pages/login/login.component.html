@@ -5,18 +5,18 @@
     <h2>Iniciar sesion</h2>
   </div>
 
-  <form class="w-50 mx-auto p-4">
+  <form #formUser="ngForm" (ngSubmit)="onSubmit(formUser)"  class="w-50 mx-auto p-4"  >
     <div class="mb-3">
       <label for="correoUsuario" class="form-label" >Correo electronico</label>
-      <input type="email" class="form-control" id="correoUsuario" placeholder="tucorreo@gmail.com">
+      <input type="email" class="form-control" id="correoUsuario" placeholder="tucorreo@gmail.com" required
+      name="userName" [(ngModel)]="user.email">
     </div>
     <div class="mb-3">
       <label for="claveUsuario" class="form-label">Clave</label>
-      <input type="password" class="form-control" id="claveUsuario">
+      <input type="password" class="form-control" id="claveUsuario" required name="password" [(ngModel)]="user.password" >
     </div>
     <button type="submit" id="btnIniciarSesion" class="btn btn-primary">Iniciar Sesion</button>
   </form>
-
 
   <a routerLink="/newUser" class="tituloSecunIcon">
     <i class="fa-solid fa-user-plus fa-3x"></i>

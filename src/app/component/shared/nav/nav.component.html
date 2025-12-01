@@ -10,9 +10,6 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" routerLink="home">Inicio</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="cortes">Cortes</a>
-        </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Servicios
@@ -24,18 +21,18 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/reserva">Reservas</a>
         </li>
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown" *ngIf="hasRole('ROLE_ADMIN')">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Administrador
           </a>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu" >
             <li><a routerLink="admin" class="dropdown-item" >Ver home admin</a></li>
             <li><a routerLink="admin/newBarbero" class="dropdown-item" >Agregar barberos</a></li>
             <li><a class="dropdown-item" routerLink="admin/gestionarServicios">Gestionar servicios</a></li>
           </ul>
         </li>
 
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown" *ngIf="hasRole('ROLE_BARBER')">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Mis opciones (barbero)
           </a>
@@ -44,7 +41,7 @@
           </ul>
         </li>
 
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="hasRole('ROLE_ADMIN')">
           <a class="nav-link" routerLink="/category">Categorias</a>
         </li>
       </ul>

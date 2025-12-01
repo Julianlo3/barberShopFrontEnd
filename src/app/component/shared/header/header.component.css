@@ -55,3 +55,8 @@
 .iconTitle i {
   margin-bottom: 5px;
 }
+
+#cerrarSesion:hover {
+  background-color: indianred;
+}
+

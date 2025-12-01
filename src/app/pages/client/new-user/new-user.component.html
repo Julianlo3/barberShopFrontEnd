@@ -3,7 +3,7 @@
   <h2>Nuevo Cliente</h2>
 </div>
 
-<form #clientForm="ngForm"  (ngSubmit)="onSubmit()" class="row g-3 w-50 mx-auto p-4">
+<form #clientForm="ngForm"  (ngSubmit)="onSubmit(clientForm)" class="row g-3 w-50 mx-auto p-4">
   <label for="newUserName">Nombre completo</label>
   <input type="text" class="form-control" id="newUserName"
          [(ngModel)]="Client.name" name="nombre"
