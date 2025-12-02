@@ -25,14 +25,7 @@ export class CortesComponent implements OnInit{
   }
 
   cargarCortes(): void {
-    this.servicioService.getServiciosByCategoriaId("1").subscribe({
-      next: (data) => {
-        this.Cortes = data.slice(0, 3);
-      },
-      error: (err) => {
-        console.error('Error al obtener cortes:');
-      }
-    });
+
   }
 
   seleccionarCorte(nombre: string) {

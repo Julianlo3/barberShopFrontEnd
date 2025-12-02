@@ -9,14 +9,14 @@
     <div class="mb-3">
       <label class="form-label">Nombre del servicio</label>
       <input type="text" class="form-control" placeholder="Ej: Corte clásico"
-             [(ngModel)]="servicio.name" name="nombre" required>
+             [(ngModel)]="servicioRequest.name" name="nombre" required>
     </div>
 
     <div class="mb-3">
       <label class="form-label">Categoría principal</label>
-      <select class="form-select" [(ngModel)]="servicio.categoryID" name="categoriaId" required>
+      <select class="form-select" [(ngModel)]="servicioRequest.category" name="categoriaId" required>
         <option [ngValue]="null" disabled>Seleccione una categoría principal</option>
-        <option *ngFor="let categoria of categorias" [ngValue]="categoria.id">{{ categoria.nombre }}
+        <option *ngFor="let categoria of categorias" [ngValue]="categoria.name">{{ categoria.name }}
         </option>
       </select>
     </div>
@@ -24,13 +24,19 @@
     <div class="mb-3">
       <label class="form-label">Descripción</label>
       <textarea class="form-control" rows="3" placeholder="Describe el servicio..."
-                [(ngModel)]="servicio.desciption" name="descripcion" required></textarea>
+                [(ngModel)]="servicioRequest.description" name="descripcion" required></textarea>
     </div>
 
     <div class="mb-3">
       <label class="form-label">Precio</label>
       <input type="number" class="form-control" placeholder="Ej: 25000"
-             [(ngModel)]="servicio.price" name="precio" required>
+             [(ngModel)]="servicioRequest.price" name="precio" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Duración estimada(minutos)</label>
+      <input type="number" class="form-control" placeholder="45 minutos mínimo"
+             [(ngModel)]="servicioRequest.duration" name="duracion" required min="45">
     </div>
 
     <div class="mb-3">
@@ -48,12 +54,6 @@
     <!-- Vista previa opcional -->
     <div class="text-center mt-2" *ngIf="preview">
       <img [src]="preview" alt="Vista previa" class="img-thumbnail" width="200">
-    </div>
-
-
-    <div class="form-check mb-3">
-      <input type="checkbox" class="form-check-input" id="activo" checked>
-      <label class="form-check-label" for="activo">'¿Servicio disponible?'</label>
     </div>
 
     <button type="submit" class="btn btn-primary" [disabled]="!categoryDisponibility">Guardar Servicio</button>

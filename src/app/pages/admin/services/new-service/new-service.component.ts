@@ -5,6 +5,9 @@ import {ServicioService} from "../../../../logica/services/servicioService";
 import {Router, RouterLink} from "@angular/router";
 import {service} from "../../../../logica/modelos/servicio";
 import {AlertService} from "../../../../logica/services/alertService";
+import {CategoryResponseDTO} from "../../../../logica/modelos/responseDTO/categoryResponseDTO";
+import {ServiceRequestDTO} from "../../../../logica/modelos/requestDTO/serviceRequestDTO";
+import {ServicesResponseDTO} from "../../../../logica/modelos/responseDTO/servicesResponseDTO";
 
 @Component({
   selector: 'app-new-service',
@@ -20,25 +23,30 @@ import {AlertService} from "../../../../logica/services/alertService";
 })
 export class NewServiceComponent implements AfterViewInit{
 
-  public categorias: any[] = [];
+  public categorias: CategoryResponseDTO[] = [];
   public servicios: service[] = [];
   public categoryDisponibility: boolean = false;
 
   selectedFile: File | null = null;
   preview: string | ArrayBuffer | null = null;
 
-  servicio: service = {
-    id: -1,
-    name: "",
-    desciption: "",
+  servicioRequest: ServiceRequestDTO = {
+    name: '',
+    description: '',
     duration: 0,
-    category: "",
+    category: '',
     price: 0,
-    available: false,
-    imagenURL: "",
-    categoryID:-1
-  };
+  }
 
+  servicioResponse: ServicesResponseDTO = {
+    id: -1,
+    name:'',
+    description: '',
+    price: -1,
+    duration: -1,
+    available: false,
+    category: '',
+  }
 
   constructor(
     private servicioService: ServicioService,
@@ -53,7 +61,7 @@ export class NewServiceComponent implements AfterViewInit{
   }
 
   cargarCategorias() {
-    this.servicioService.getCategorias().subscribe({
+    this.servicioService.getCategories().subscribe({
       next: (categorias) =>{
         this.categoryDisponibility = true;
         this.categorias = categorias
@@ -74,15 +82,17 @@ export class NewServiceComponent implements AfterViewInit{
       return;
     }
 
-    const formData = new FormData();
-    formData.append('name', this.servicio.name);
-    formData.append('description', this.servicio.desciption);
-    formData.append('duration', this.servicio.duration.toString());
-    formData.append('category', this.servicio.category);
-    formData.append('available', String(this.servicio.available));
-    formData.append('imagenURL', this.selectedFile);
+    // /*const formData = new FormData();
+    // formData.append('name', this.servicio.name);
+    // formData.append('description', this.servicio.desciption);
+    // formData.append('duration', this.servicio.duration.toString());
+    // formData.append('category', this.servicio.category);
+    // formData.append('available', String(this.servicio.available));
+    // formData.append('imagenURL', this.selectedFile);*/
 
-    this.servicioService.crearServicio(formData).subscribe({
+    console.log("servicio a crear: ", this.servicioRequest);
+
+    this.servicioService.crearServicio(this.servicioRequest).subscribe({
       next: () => {
         this.AlertService.success("Servicio creado con éxito");
         this.cargarServicios();

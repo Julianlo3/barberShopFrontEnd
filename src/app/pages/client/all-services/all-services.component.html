@@ -8,10 +8,10 @@
       <div class="container-fluid">
         <ul class="nav justify-content-center">
           <li class="nav-item" *ngFor="let cat of categorias">
-            <a class="nav-link"
+            <a class="nav-link categoria"
                [class.active]="cat.name === categoriaSeleccionada"
                (click)="seleccionarCategoria(cat.id)">
-              {{ cat.nombre }}
+              {{ cat.name }}
             </a>
           </li>
         </ul>
@@ -23,11 +23,12 @@
       <div class="row">
         <div class="col-md-4" *ngFor="let s of servicios">
           <div class="card shadow-sm mb-4">
-            <img [src]="'http://localhost:8083' + s.imagenURL" class="card-img-top" alt="{{ s.name }}">
+<!--            <img [src]="'http://localhost:8083' + s.imagenURL" class="card-img-top" alt="{{ s.name }}">-->
             <div class="card-body">
               <h5 class="card-title">{{ s.name }}</h5>
-              <p class="card-text">{{ s.desciption }}</p>
+              <p class="card-text">{{ s.description }}</p>
               <p class="card-text fw-bold text-dark">$ {{ s.price | number }}</p>
+              <p class="card-text">{{ s.category }}</p>
             </div>
           </div>
         </div>

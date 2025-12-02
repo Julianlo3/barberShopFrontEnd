@@ -4,6 +4,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {ServicioService} from "../../../../logica/services/servicioService";
 import {AlertService} from "../../../../logica/services/alertService";
 import {service} from "../../../../logica/modelos/servicio";
+import {CategoryResponseDTO} from "../../../../logica/modelos/responseDTO/categoryResponseDTO";
+import {ServicesResponseDTO} from "../../../../logica/modelos/responseDTO/servicesResponseDTO";
 
 @Component({
   selector: 'app-update-service',
@@ -18,21 +20,17 @@ export class UpdateServiceComponent {
 
   selectedFile: File | null = null;
   preview: string | ArrayBuffer | null = null;
-  public categorias: any[] = [];
-  public subcategorias: any[] = [];
+  public categorias: CategoryResponseDTO[] = [];
 
-
-  servicio: service = {
+  servicioResponse: ServicesResponseDTO = {
     id: -1,
-    name: "",
-    desciption: "",
-    duration: 0,
-    category: "",
-    price: 0,
+    name:'',
+    description: '',
+    price: -1,
+    duration: -1,
     available: false,
-    imagenURL: "",
-    categoryID:-1
-  };
+    category: '',
+  }
 
 
   constructor(
@@ -46,10 +44,9 @@ export class UpdateServiceComponent {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.cargarCategorias();
-      this.cargarSubCategorias();
       this.servicioService.getServicioById(id).subscribe({
         next: (data) => {
-          this.servicio = data;
+          this.servicioResponse = data;
           this.preview = data.imagenURL;
 
         },
@@ -58,14 +55,8 @@ export class UpdateServiceComponent {
     }
   }
   cargarCategorias() {
-    this.servicioService.getCategorias().subscribe(
+    this.servicioService.getCategories().subscribe(
       categorias => this.categorias = categorias
-    );
-  }
-
-  cargarSubCategorias(){
-    this.servicioService.getSubCategorias().subscribe(
-      subcategorias => this.subcategorias = subcategorias
     );
   }
 
@@ -91,15 +82,15 @@ export class UpdateServiceComponent {
       return;
     }
 
-    const formData = new FormData();
-    formData.append('name', this.servicio.name);
-    formData.append('description', this.servicio.desciption);
-    formData.append('duration', this.servicio.duration.toString());
-    formData.append('category', this.servicio.category);
-    formData.append('available', String(this.servicio.available));
-    formData.append('imagenURL', this.selectedFile);
+    // const formData = new FormData();
+    // formData.append('name', this.servicio.name);
+    // formData.append('description', this.servicio.desciption);
+    // formData.append('duration', this.servicio.duration.toString());
+    // formData.append('category', this.servicio.category);
+    // formData.append('available', String(this.servicio.available));
+    // formData.append('imagenURL', this.selectedFile);
 
-    this.servicioService.crearServicio(formData).subscribe({
+    this.servicioService.crearServicio(this.servicioResponse).subscribe({
       next: () => {
         this.alertService.success("Servicio creado con éxito");
         form.resetForm();

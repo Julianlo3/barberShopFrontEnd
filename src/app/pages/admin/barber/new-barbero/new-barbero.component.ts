@@ -54,7 +54,7 @@ export class NewBarberoComponent {
 
     console.log('Enviando barbero:', this.barbero);
     this.barberoService.crearBarbero(this.barbero).subscribe({
-      next: () => this.AlertService.success("Barbero creado con éxito"),
+      next: () => {this.AlertService.success("Barbero creado con éxito");},
       error: () => this.AlertService.error("Error al guardar barbero")
     });
   }

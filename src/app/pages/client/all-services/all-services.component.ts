@@ -3,6 +3,7 @@ import {CommonModule, DecimalPipe, NgForOf, NgIf} from "@angular/common";
 import {ServicioService} from "../../../logica/services/servicioService";
 import {HttpClientModule} from "@angular/common/http";
 import {service} from "../../../logica/modelos/servicio";
+import {ServicesResponseDTO} from "../../../logica/modelos/responseDTO/servicesResponseDTO";
 
 
 @Component({
@@ -22,18 +23,16 @@ export class AllServicesComponent {
 
   categorias: any[] = []; // Aquí se guardarán las categorías
   categoriaSeleccionada: string = ''; // Para manejar la selección
-  public servicios: service[] = [];
+  public servicios: ServicesResponseDTO[] = [];
 
-  servicio: service = {
+  servicio: ServicesResponseDTO = {
     id:-1,
     name: "",
-    desciption: "",
-    duration: 0,
-    category: "",
+    description: "",
     price: 0,
+    duration: 0,
     available: false,
-    imagenURL: "",
-    categoryID:-1
+    category: "",
   };
 
   constructor(
@@ -41,25 +40,25 @@ export class AllServicesComponent {
 
   ngOnInit(): void {
     this.cargarCategorias();
-    this.cargarServicios("1");
+    this.cargarServicios();
   }
 
   cargarCategorias() {
-    this.servicioService.getCategorias().subscribe(
+    this.servicioService.getCategories().subscribe(
       categorias => this.categorias = categorias
     );
   }
 
-  cargarServicios(id: string) {
-    this.servicioService.getServiciosByCategoriaId(id).subscribe(
+  cargarServicios() {
+    this.servicioService.getServicios().subscribe(
       servicios => this.servicios = servicios
-    );
+    )
   }
 
   seleccionarCategoria(id: string) {
     this.categoriaSeleccionada = id;
     console.log('Categoría seleccionada:', id);
-    this.cargarServicios(id);
+
   }
 
 }

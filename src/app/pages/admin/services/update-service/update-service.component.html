@@ -7,25 +7,25 @@
       <!-- Nombre -->
       <div class="col-12 col-md-6">
         <label class="form-label">Nombre</label>
-        <input type="text" [(ngModel)]="servicio.name" name="nombre" required class="form-control" />
+        <input type="text" [(ngModel)]="servicioResponse.name" name="nombre" required class="form-control" />
       </div>
 
       <!-- Precio -->
       <div class="col-12 col-md-6">
         <label class="form-label">Precio</label>
-        <input type="number" [(ngModel)]="servicio.price" name="precio" required class="form-control" />
+        <input type="number" [(ngModel)]="servicioResponse.price" name="precio" required class="form-control" />
       </div>
 
       <!-- Descripción -->
       <div class="col-12">
         <label class="form-label">Descripción</label>
-        <textarea [(ngModel)]="servicio.desciption" name="descripcion" required class="form-control"></textarea>
+        <textarea [(ngModel)]="servicioResponse.description" name="descripcion" required class="form-control"></textarea>
       </div>
 
       <!-- Estado -->
       <div class="col-12 col-md-6">
         <label class="form-label">Estado</label>
-        <select [(ngModel)]="servicio.available" name="estado" class="form-select">
+        <select [(ngModel)]="servicioResponse.available" name="estado" class="form-select">
           <option [value]="true">Activo</option>
           <option [value]="false">Inactivo</option>
         </select>
@@ -34,7 +34,7 @@
       <!-- Categoría principal -->
       <div class="col-12 col-md-6">
         <label class="form-label">Categoría principal</label>
-        <select class="form-select" [(ngModel)]="servicio.categoryID" name="categoriaId" required>
+        <select class="form-select" [(ngModel)]="servicioResponse.category" name="categoriaId" required>
           <option [ngValue]="null" disabled>Seleccione una categoría principal</option>
           <option *ngFor="let categoria of categorias" [ngValue]="categoria.id">{{categoria.nombre}}</option>
         </select>
@@ -42,12 +42,12 @@
 
       </div>
 
-      <!-- Imagen -->
-      <div class="col-12 col-md-6">
-        <label class="form-label">Imagen</label>
-        <input type="file" (change)="onFileSelected($event)" class="form-control mb-2" />
-        <img [src]="'http://localhost:8083' + servicio.imagenURL" class="img-fluid rounded" alt="{{ servicio.name }}">
-      </div>
+<!--      &lt;!&ndash; Imagen &ndash;&gt;-->
+<!--      <div class="col-12 col-md-6">-->
+<!--        <label class="form-label">Imagen</label>-->
+<!--        <input type="file" (change)="onFileSelected($event)" class="form-control mb-2" />-->
+<!--        <img [src]="'http://localhost:8083" class="img-fluid rounded" alt="{{ servicioResponse.name }}">-->
+<!--      </div>-->
 
     <!-- Botones -->
     <div class="mt-4 d-flex justify-content-center gap-3">

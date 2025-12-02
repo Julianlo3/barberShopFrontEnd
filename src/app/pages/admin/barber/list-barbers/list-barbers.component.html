@@ -2,3 +2,35 @@
   <i class="fa-brands fa-black-tie fa-4x"></i>
   <h2>Lista de barberos</h2>
 </div>
+
+
+<div *ngIf="barberos.length > 0; else noBarberos">
+  <div class="row justify-content-center">
+
+    <div class="col-md-4" *ngFor="let b of barberos">
+      <div class="card shadow-sm mb-4">
+        <div class="card-body">
+          <h5 class="card-title">{{b.id}}.{{ b.name }}</h5>
+          <p class="card-text">{{b.email}}-{{b.phone}} <br> {{b.available}} <br> {{b.schedule}}</p>
+        </div>
+
+        <div class="card-footer d-flex justify-content-between">
+          <button class="btn btn-outline-dark btn-sm">
+            <i class="fa-solid fa-pen-to-square"></i> Editar
+          </button>
+
+          <button class="btn btn-outline-danger btn-sm">
+            <i class="fa-solid fa-trash"(click)="deleteBarber(b.name,b.id)" ></i> Eliminar
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+</div>
+
+<ng-template #noBarberos>
+  <p class="text-muted text-center">No hay barberos registrados.</p>
+</ng-template>

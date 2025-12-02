@@ -21,11 +21,6 @@ export class ServiciosComponent {
   constructor(private servicioService: ServicioService) {}
 
   ngOnInit(): void {
-    this.servicioService.getServiciosByCategoriaId("2").subscribe( {
-      next: (servicios) =>{
-        this.serviciosLimitados = servicios.slice(0, 3);
-      },
-      error: () => {console.error('Error al obtener servicios:')}
-    });
+
   }
 }

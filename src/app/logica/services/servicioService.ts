@@ -1,17 +1,19 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {service} from "../modelos/servicio";
 import {configApi} from "../services/configApi";
 import {CategoryRequestDTO} from "../modelos/requestDTO/categoryRequestDTO";
 import {CategoryResponseDTO} from "../modelos/responseDTO/categoryResponseDTO";
+import {ServiceRequestDTO} from "../modelos/requestDTO/serviceRequestDTO";
+import {StorageService} from "./storage-service.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServicioService {
 
-  constructor(private http: HttpClient,private configApi: configApi) {}
+  constructor(private http: HttpClient,private configApi: configApi,private storageService: StorageService) {}
 
   crearCategory(category: CategoryRequestDTO): Observable<any> {
     return this.http.post(this.configApi.getApiURL()+'/service/category', category);
@@ -22,8 +24,13 @@ export class ServicioService {
   }
 
   //Servicios
-  crearServicio(formData: FormData): Observable<any> {
-    return this.http.post(this.configApi.getApiURL() + '/save', formData);
+  crearServicio(servicio: ServiceRequestDTO): Observable<any> {
+    const token = this.storageService.getToken();
+    return this.http.post(this.configApi.getApiURL()+'/service',servicio,{
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      })
+    });
   }
 
   getServicioById(id: string): Observable<any> {
@@ -39,26 +46,9 @@ export class ServicioService {
   }
 
   getServicios(): Observable<any> {
-    return this.http.get(this.configApi.getApiURL());
+    return this.http.get(this.configApi.getApiURL()+"/service");
   }
 
-  //Categorias
-  getCategorias(): Observable<any> {
-    return this.http.get(this.configApi.getApiURL()+'/getAll');
-  }
-
-  getServiciosByCategoriaId(id: string): Observable<any> {
-    return this.http.get(this.configApi.getApiURL() + '/categoria/' + id);
-  }
-
-  //subCategorias
-  getSubCategorias(): Observable<any> {
-    return this.http.get(this.configApi.getApiURL());
-  }
-
-  getSubCategoriaById(id: string): Observable<any> {
-    return this.http.get(this.configApi.getApiURL() + '/'+ id);
-  }
 
 
 
