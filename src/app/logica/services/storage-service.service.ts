@@ -47,8 +47,8 @@ export class StorageService {
 
   public getToken(): string | null {
     const user = this.getUser();
-    if (user && user.accessToken) {
-      return user.accessToken;
+    if (user && user.token) {
+      return user.token;
     }
     return null;
   }

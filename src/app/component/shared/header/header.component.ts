@@ -29,7 +29,7 @@ export class HeaderComponent {
   }
 
   obtenerInfoUsuario(){
-    return this.storageService.getUser().email;
+    return this.storageService.getUser();
   }
 
   cerrarSesion(){

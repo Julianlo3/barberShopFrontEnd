@@ -12,6 +12,7 @@ import {ListBarbersComponent} from "./pages/admin/barber/list-barbers/list-barbe
 import {NewServiceComponent} from "./pages/admin/services/new-service/new-service.component";
 import {BarbershopMetricsComponent} from "./pages/barbershop-metrics/barbershop-metrics.component";
 import {MydayComponent} from "./pages/barber/myday/myday.component";
+import {MyDataComponent} from "./pages/client/my-data/my-data.component";
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -27,5 +28,6 @@ export const routes: Routes = [
   { path: "admin/category", component: CategoryComponent},
   { path: "admin/listBarber", component: ListBarbersComponent},
   { path: "metrics", component:BarbershopMetricsComponent},
-  { path: 'barber/myDay', component: MydayComponent}
+  { path: 'barber/myDay', component: MydayComponent},
+  { path: 'client/myData/:id',component: MyDataComponent}
 ];

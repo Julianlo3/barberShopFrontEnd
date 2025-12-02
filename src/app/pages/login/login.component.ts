@@ -7,6 +7,7 @@ import {ClientService} from "../../logica/services/clientService";
 import {AlertService} from "../../logica/services/alertService";
 import {StorageService} from "../../logica/services/storage-service.service"
 import { Router } from '@angular/router';
+import {AuthService} from "../../logica/services/authService";
 
 
 @Component({
@@ -22,9 +23,10 @@ import { Router } from '@angular/router';
 export class LoginComponent {
 
   constructor(private clientService: ClientService,
-              private alertService: AlertService,
               private storageService: StorageService,
-              private router: Router) {
+              private router: Router,
+              private authService: AuthService,
+              private alertService: AlertService) {
   }
 
   user: UserLogin= {
@@ -33,8 +35,9 @@ export class LoginComponent {
   }
 
   onSubmit(form: NgForm){
-    this.clientService.login(this.user.email,this.user.password).subscribe({
+    this.authService.login(this.user.email,this.user.password).subscribe({
       next: (data) => {
+
         this.storageService.saveUser(data);
         console.log('Login exitoso');
         this.alertService.success("Login exitoso");
