@@ -1,8 +1,8 @@
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs";
+import {configApi} from "../services/configApi";
 
-const API_GATEWAY = 'http://localhost:8081/api/auth';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -13,10 +13,10 @@ const httpOptions = {
 })
 
 export class AuthService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private configApi: configApi) {}
 
   login(email: string, password: string): Observable<any> {
-    return this.http.post(`${API_GATEWAY}/signin`, { email, password }, httpOptions);
+    return this.http.post(`${this.configApi.getApiURL()}/auth/signin`, { email, password }, httpOptions);
   }
 
 }

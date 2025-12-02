@@ -42,6 +42,56 @@
     </div>
   </div>
 
+  <h2>Cronograma del barbero</h2>
+  <div class="col-md-6">
+    <label for="newBarberStartTime" class="form-label">Hora entrada</label>
+    <input type="time" class="form-control" id="newBarberStartTime" [(ngModel)]="barbero.schedule.startTime" name="startTime" required
+           #startTime="ngModel">
+    <div class="alert alert-danger" *ngIf="startTime.invalid && (startTime.dirty || startTime.touched)">
+      <div *ngIf="startTime.errors?.['required']">La hora de inicio es obligatoria</div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <label for="newBarberEndTime" class="form-label">Hora Salida</label>
+    <input type="time" class="form-control" id="newBarberEndTime" [(ngModel)]="barbero.schedule.endTime" name="endTime" required
+           #endTime="ngModel">
+    <div class="alert alert-danger" *ngIf="endTime.invalid && (endTime.dirty || endTime.touched)">
+      <div *ngIf="endTime.errors?.['required']">La hora de salida es obligatoria</div>
+    </div>
+  </div>
+
+  <div class="schedule-days">
+    <label class="day-option">
+      <input type="checkbox" value="MONDAY" (change)="onDaySelect($event)"> Lunes
+    </label>
+
+    <label class="day-option">
+      <input type="checkbox" value="TUESDAY" (change)="onDaySelect($event)"> Martes
+    </label>
+
+    <label class="day-option">
+      <input type="checkbox" value="WEDNESDAY" (change)="onDaySelect($event)"> Miércoles
+    </label>
+
+    <label class="day-option">
+      <input type="checkbox" value="THURSDAY" (change)="onDaySelect($event)"> Jueves
+    </label>
+
+    <label class="day-option">
+      <input type="checkbox" value="FRIDAY" (change)="onDaySelect($event)"> Viernes
+    </label>
+
+    <label class="day-option">
+      <input type="checkbox" value="SATURDAY" (change)="onDaySelect($event)"> Sábado
+    </label>
+
+    <label class="day-option">
+      <input type="checkbox" value="SUNDAY" (change)="onDaySelect($event)"> Domingo
+    </label>
+  </div>
+
+
   <div class="col-12 row justify-content-center mt-4">
     <button id="btnCrearBarbero" type="submit" role="button" class="btn btn-primary" [disabled]="!BarberForm.form.valid" >Crear barbero</button>
   </div>

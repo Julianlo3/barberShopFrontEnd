@@ -3,7 +3,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AlertService} from "../../../logica/services/alertService";
 import {HttpClientModule} from "@angular/common/http";
 import {cita} from "../../../logica/modelos/cita";
-import {citaService} from "../../../logica/services/citasService";
+import {citaService} from "../../../logica/services/reservasServices";
 import {NgOptimizedImage} from "@angular/common";
 
 @Component({

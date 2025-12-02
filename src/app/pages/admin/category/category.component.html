@@ -23,7 +23,7 @@
                  id="nombreCategoria"
                  name="nombreCategoria"
                  placeholder="Ej: Corte moderno"
-                 [(ngModel)]="category.name"
+                 [(ngModel)]="categoryRequest.name"
                  #nombreCategoria="ngModel"
                  required minlength="4">
 
@@ -63,7 +63,7 @@
           <div class="col-md-4" *ngFor="let s of Categories">
             <div class="card shadow-sm mb-4">
               <div class="card-body">
-                <h5 class="card-title">{{ s.nombre }}</h5>
+                <h5 class="card-title">{{s.id}}.{{ s.name }}</h5>
               </div>
 
               <div class="card-footer d-flex justify-content-between">
@@ -72,7 +72,7 @@
                 </button>
 
                 <button class="btn btn-outline-danger btn-sm">
-                  <i class="fa-solid fa-trash"></i> Eliminar
+                  <i class="fa-solid fa-trash"(click)="deleteCategory(s.name,s.id)" ></i> Eliminar
                 </button>
               </div>
             </div>

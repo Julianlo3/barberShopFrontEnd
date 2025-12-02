@@ -2,55 +2,62 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {service} from "../modelos/servicio";
-
+import {configApi} from "../services/configApi";
+import {CategoryRequestDTO} from "../modelos/requestDTO/categoryRequestDTO";
+import {CategoryResponseDTO} from "../modelos/responseDTO/categoryResponseDTO";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServicioService {
-  private API_URLServicio = 'http://localhost:8083/servicios';
-  private API_URLCategoria = 'http://localhost:8083/categorias';
-  private API_URLSubCategoria = 'http://localhost:8083/subcategorias';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,private configApi: configApi) {}
+
+  crearCategory(category: CategoryRequestDTO): Observable<any> {
+    return this.http.post(this.configApi.getApiURL()+'/service/category', category);
+  }
+
+  getCategories(): Observable<CategoryResponseDTO[]> {
+    return this.http.get<CategoryResponseDTO[]>(this.configApi.getApiURL()+'/service/category');
+  }
 
   //Servicios
   crearServicio(formData: FormData): Observable<any> {
-    return this.http.post(this.API_URLServicio + '/save', formData);
+    return this.http.post(this.configApi.getApiURL() + '/save', formData);
   }
 
   getServicioById(id: string): Observable<any> {
-    return this.http.get(this.API_URLServicio + '/' + id);
+    return this.http.get(this.configApi.getApiURL() + '/' + id);
   }
 
   actualizarServicio(id: string,formData: FormData): Observable<any> {
-    return this.http.put(this.API_URLServicio + "/"+id, formData);
+    return this.http.put(this.configApi.getApiURL() + "/"+id, formData);
   }
 
   eliminarServicio(id: string): Observable<any> {
-    return this.http.delete(this.API_URLServicio+"/"+id);
+    return this.http.delete(this.configApi.getApiURL()+"/"+id);
   }
 
   getServicios(): Observable<any> {
-    return this.http.get(this.API_URLServicio);
+    return this.http.get(this.configApi.getApiURL());
   }
 
   //Categorias
   getCategorias(): Observable<any> {
-    return this.http.get(this.API_URLCategoria+'/getAll');
+    return this.http.get(this.configApi.getApiURL()+'/getAll');
   }
 
   getServiciosByCategoriaId(id: string): Observable<any> {
-    return this.http.get(this.API_URLServicio + '/categoria/' + id);
+    return this.http.get(this.configApi.getApiURL() + '/categoria/' + id);
   }
 
   //subCategorias
   getSubCategorias(): Observable<any> {
-    return this.http.get(this.API_URLSubCategoria);
+    return this.http.get(this.configApi.getApiURL());
   }
 
   getSubCategoriaById(id: string): Observable<any> {
-    return this.http.get(this.API_URLSubCategoria + '/'+ id);
+    return this.http.get(this.configApi.getApiURL() + '/'+ id);
   }
 
 

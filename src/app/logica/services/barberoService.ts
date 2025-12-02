@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
-import {Barbero} from "../modelos/barbero";
+import {configApi} from "../services/configApi";
+import {BarberRequestDTO} from "../modelos/requestDTO/barberRequestDTO";
+import {StorageService} from "./storage-service.service";
 
 
 @Injectable({
@@ -10,10 +12,15 @@ import {Barbero} from "../modelos/barbero";
 export class BarberoService {
   private API_URL = 'http://localhost:8081/barbero';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,private storageService: StorageService,private configApi: configApi) {}
 
-  private EndPointPost = '/save';
-  crearBarbero(barbero: Barbero): Observable<any> {
-    return this.http.post(this.API_URL+this.EndPointPost, barbero);
+  crearBarbero(barbero: BarberRequestDTO): Observable<any> {
+    const token = this.storageService.getToken();
+    return this.http.post(this.configApi.getApiURL()+"/auth/signup/barber", barbero,{
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      })
+    });
   }
 }
+

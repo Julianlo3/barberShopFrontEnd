@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgIf,NgForOf} from "@angular/common";
-import {Category} from "../../../logica/modelos/category";
-import {CategoryService} from "../../../logica/services/categoryService";
+
 import {AlertService} from "../../../logica/services/alertService";
 import {HttpClientModule} from "@angular/common/http";
+import {CategoryRequestDTO} from "../../../logica/modelos/requestDTO/categoryRequestDTO";
+import {CategoryResponseDTO} from "../../../logica/modelos/responseDTO/categoryResponseDTO";
+import {ServicioService} from "../../../logica/services/servicioService";
 
 @Component({
   selector: 'app-category',
@@ -20,24 +22,28 @@ import {HttpClientModule} from "@angular/common/http";
   styleUrl: './category.component.css'
 })
 export class CategoryComponent {
-  Categories: any[] = [];
+  Categories: CategoryResponseDTO[] = [];
 
-category: Category ={
-  id:-1,
+categoryRequest: CategoryRequestDTO ={
   name:'',
-  createdBy: "admin"
+}
+
+categoryResponse: CategoryResponseDTO = {
+  id:-1,
+  name:''
 }
 
 constructor(
-  private categoriaService: CategoryService,
+  private servicioService: ServicioService,
   private AlertService: AlertService,
 ) {
 }
 
   onSubmit(){
-  this.categoriaService.crearCategory(this.category).subscribe({
+  this.servicioService.crearCategory(this.categoryRequest).subscribe({
     next:() => {
       this.AlertService.success("Categoria creada con exito")
+      this.cargarCategories();
     },
     error: () => this.AlertService.error("Error al crear categoria")
   })
@@ -54,7 +60,7 @@ constructor(
   }
 
   cargarCategories(){
-    this.categoriaService.getCategories().subscribe({
+    this.servicioService.getCategories().subscribe({
       next: (data) => {
         this.Categories = data;
       },
@@ -62,6 +68,15 @@ constructor(
         console.error('Error al obtener categorias:', err);
       }
     });
+  }
+
+  deleteCategory(name: String,id: number){
+    this.AlertService.confirm("Eliminar categoria:"+name,"¿Desea eliminar la categoria seleccionada?").then(result => {
+      if (result){
+        console.log("Eliminando categoria con id:", id);
+      }
+    })
+
   }
 
 }

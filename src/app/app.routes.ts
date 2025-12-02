@@ -16,7 +16,7 @@ import {MyDataComponent} from "./pages/client/my-data/my-data.component";
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: '', redirectTo: '/barbero', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'newUser', component: NewUserComponent },
   { path: 'admin/newBarbero', component: NewBarberoComponent },

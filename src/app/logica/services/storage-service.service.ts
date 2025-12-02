@@ -16,7 +16,7 @@ export class StorageService {
 
   getUserRoles(): string[] {
     if (typeof window !== 'undefined' && window.sessionStorage){
-      const roles = localStorage.getItem('roles');
+      const roles = sessionStorage.getItem('roles');
       return roles ? JSON.parse(roles) : [];
     }
     else {
@@ -25,7 +25,10 @@ export class StorageService {
   }
 
   hasRole(role: string): boolean {
-    return this.getUserRoles().includes(role);
+    if (typeof window !== 'undefined' && window.sessionStorage){
+      return this.getUser().roles.includes(role);
+    }
+    return false;
   }
 
   public saveUser(user: any): void {

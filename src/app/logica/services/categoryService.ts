@@ -1,23 +1,24 @@
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs";
-import {Category} from "../modelos/category";
 import {HttpClient} from "@angular/common/http";
+import {configApi} from "./configApi";
+import {CategoryRequestDTO} from "../modelos/requestDTO/categoryRequestDTO";
+import {CategoryResponseDTO} from "../modelos/responseDTO/categoryResponseDTO";
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class CategoryService {
-  private API_URL = 'http://localhost:8083/api/categorias';
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,private configApi: configApi) {
   }
 
-  crearCategory(category: Category): Observable<any> {
-    return this.http.post(this.API_URL, category);
+  crearCategory(category: CategoryRequestDTO): Observable<any> {
+    return this.http.post(this.configApi.getApiURL(), category);
   }
 
-  getCategories(): Observable<Category[]> {
-    return this.http.get<Category[]>(this.API_URL);
+  getCategories(): Observable<CategoryResponseDTO[]> {
+    return this.http.get<CategoryResponseDTO[]>(this.configApi.getApiURL());
   }
 }
