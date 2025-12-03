@@ -1,10 +1,13 @@
 <section id="nueva-cita">
+
+  <!-- Título -->
   <div class="tituloSecunIcon">
     <i class="fa-solid fa-hand-point-up fa-4x"></i>
     <h2>Tu reserva</h2>
   </div>
 
   <div class="row justify-content-center align-items-center contenido-cita">
+
     <!-- Imagen -->
     <div class="col-12 col-md-5 text-center mb-4 mb-md-0">
       <img
@@ -16,44 +19,52 @@
       />
     </div>
 
-    <!-- Formulario -->
+    <!-- FORMULARIO -->
     <form (ngSubmit)="onSubmit()" class="col-12 col-md-6 form-cita">
+
+      <!-- Nombre -->
       <div class="mb-3">
         <label for="citaNombreUser" class="form-label">Tu nombre</label>
         <input
           type="text"
-          class="form-control"
           id="citaNombreUser"
+          class="form-control"
+          placeholder="Pepito Bigotes"
           [(ngModel)]="nombreCliente"
           name="nombreCliente"
-          placeholder="Pepito Bigotes"
-          readonly="readonly"
+          readonly
         />
       </div>
 
-      <div class="mb-3" >
+      <!-- Barbero -->
+      <div class="mb-3">
         <label for="selectBarbero" class="form-label">Barbero a elección</label>
         <select
-          class="form-select"
           id="selectBarbero"
+          class="form-select"
           [(ngModel)]="cita.barberId"
           name="barbero"
-          required
           (change)="cargarHorarioBarbero($event)"
+          required
         >
-          <option [ngValue]="null" disabled>Seleccione un barbero a preferencia</option>
-          <option *ngFor="let b of barberos" [ngValue]="b.id">{{ b.name }}
+          <option [ngValue]="null" disabled>Seleccione un barbero</option>
+          <option *ngFor="let b of barberos" [ngValue]="b.id">
+            {{ b.name }}
           </option>
         </select>
       </div>
 
-      <div class="mb-3">
-        <h2>Días en que el barbero esta disponible</h2>
-        <p>{{horarioBarbero.workDays}}</p>
+      <!-- Horario del barbero -->
+      <div class="horario-barbero mb-4">
+        <h3>Días disponibles</h3>
+        <p class="dias-disponibles">{{ horarioBarbero.workDays }}</p>
       </div>
 
-      <div class="row mb-4">
-        <div class="col-6">
+      <!-- Fecha y horas -->
+      <div class="row g-3 mb-4">
+
+        <!-- FECHA -->
+        <div class="col-md-6">
           <label for="fechaCita" class="form-label">Fecha de la cita</label>
           <input
             type="date"
@@ -64,27 +75,105 @@
             required
           />
         </div>
-        <div class="col-6">
-          <label for="horaCita" class="form-label">Servicios seleccionados </label>
+
+        <!-- HORA INICIO -->
+        <div class="col-md-6">
+          <label for="horaCita" class="form-label">Hora inicio</label>
+          <p class="info-horario">
+            Disponible desde {{ horarioBarbero.startTime }} a {{ horarioBarbero.endTime }}
+          </p>
           <input
-            type="text"
+            type="time"
             id="horaCita"
             class="form-control"
             [(ngModel)]="cita.startTime"
             name="horaCita"
+            (change)="onStartTimeChange()"
+            required
+          />
+        </div>
+
+        <!-- HORA FIN -->
+        <div class="col-md-6">
+          <label for="horaFin" class="form-label">Hora estimada de finalización</label>
+          <input
+            type="time"
+            id="horaFin"
+            class="form-control"
+            [ngModel]="horaSalidaEstimada"
+            name="horaFin"
+            readonly
+          />
+        </div>
+
+        <!-- Servicios seleccionados -->
+        <div class="col-md-6">
+          <label for="citaServices" class="form-label">Servicios seleccionados</label>
+          <input
+            type="text"
+            id="citaServices"
+            class="form-control"
+            [(ngModel)]="cita.services"
+            name="citaServices"
+            readonly
             required
           />
         </div>
       </div>
 
+      <!-- LISTA DE SERVICIOS -->
+      <div class="services-section">
+
+        <h3>Servicios disponibles</h3>
+
+        <div class="services-checklist" *ngIf="servicios.length > 0; else noServices">
+          <div class="service-card" *ngFor="let servicio of servicios">
+
+            <label class="service-item">
+
+              <input type="checkbox"
+                     [value]="servicio.id"
+                     [checked]="isServicioSeleccionado(servicio.id)"
+                     (change)="onServiceSelect($event)" />
+
+              <div class="service-content">
+
+                <div class="service-header">
+                  <span class="service-name">{{ servicio.name }}</span>
+                  <span class="service-price">{{ servicio.price }}</span>
+                </div>
+
+                <p class="service-description" *ngIf="servicio.description">
+                  {{ servicio.description }}
+                </p>
+
+                <div class="service-duration" *ngIf="servicio.duration">
+                  <i class="bi bi-clock"></i>
+                  <span>{{ servicio.duration }} min</span>
+                </div>
+
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Sin servicios -->
+        <ng-template #noServices>
+          <div class="no-services">
+            <i class="bi bi-info-circle"></i>
+            <p>No hay servicios disponibles</p>
+          </div>
+        </ng-template>
+
+      </div>
+
+      <!-- Botón -->
       <div class="text-center">
-        <button type="submit" class="btn btn-primary px-4 py-2 m-2">
+        <button type="submit" class="btn btn-primary px-4 py-2 mt-3">
           Agendar cita
         </button>
-        <button type="submit" class="btn btn-primary px-4 py-2">
-          Eliminar cita
-        </button>
       </div>
+
     </form>
   </div>
 </section>

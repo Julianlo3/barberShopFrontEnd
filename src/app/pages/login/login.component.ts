@@ -34,6 +34,10 @@ export class LoginComponent {
     password: ''
   }
 
+  hasRole(role: string): boolean {
+    return this.storageService.hasRole(role);
+  }
+
   onSubmit(form: NgForm){
     this.authService.login(this.user.email,this.user.password).subscribe({
       next: (data) => {
@@ -41,7 +45,15 @@ export class LoginComponent {
         this.storageService.saveUser(data);
         console.log('Login exitoso');
         this.alertService.success("Login exitoso");
-        this.router.navigate(['/home']);
+        const roles = this.storageService.getUser().roles;
+        console.log("Rol del usuario: " + roles + "");
+
+        switch (roles[0]) {
+          case 'ROLE_CLIENT': this.router.navigate(['/home']); break;
+          case 'ROLE_BARBER': this.router.navigate(['/barber/myDay']); break;
+          case 'ROLE_ADMIN': this.router.navigate(['/admin']); break;
+          default: this.router.navigate(['/home']);
+        }
       },
       error: (err) => {
         console.error(err);

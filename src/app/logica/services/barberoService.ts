@@ -31,6 +31,15 @@ export class BarberoService {
     });
   }
 
+  getBarberoById(id: number):Observable<BarberResponseDTO>{
+    const token = this.storageService.getToken();
+    return this.http.get<BarberResponseDTO>(this.configApi.getApiURL()+"/barber/"+id,{
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      })
+    });
+  }
+
   getBarberoByEmail(email: string): Observable<BarberResponseDTO>{
     const token = this.storageService.getToken();
     return this.http.get<BarberResponseDTO>(this.configApi.getApiURL()+"/barber/email", {

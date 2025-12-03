@@ -1,54 +1,186 @@
-<div class="tituloSecunIcon">
-  <i class="fa-brands fa-black-tie fa-4x"></i>
-  <h2>Mi día</h2>
-</div>
-
-<div>
-
-  <div id="infoBarbero">
-    <h2>Hola Julian</h2>
+<div class="container mt-4">
+  <!-- Encabezado -->
+  <div class="tituloSecunIcon mb-4">
+    <i class="fa-brands fa-black-tie fa-2x me-3"></i>
+    <h2 class="d-inline">Mi día</h2>
   </div>
 
-  <h2 class="tituloSecunIcon mb-4">
-    Servicios para el día de hoy
-  </h2>
+  <!-- Información del barbero -->
+  <div id="infoBarbero" class="card mb-4">
+    <div class="card-body">
+      <h3 class="mb-0">Hola, {{ nombreBarbero }}</h3>
+      <p class="text-muted mb-0">Aquí puedes ver tu disponibilidad y reservas</p>
+    </div>
+  </div>
 
-  <div class="timeline">
-    <div class="hour-block" *ngFor="let h of horas">
+  <!-- Selector de fecha -->
+  <div class="row mb-4">
+    <div class="col-md-6">
+      <label for="fechaSeleccionada" class="form-label text-white">Selecciona una fecha:</label>
+      <input type="date"
+             id="fechaSeleccionada"
+             class="form-control"
+             [(ngModel)]="fechaSeleccionada"
+             (change)="cambiarFecha()">
+    </div>
+    <div class="col-md-6">
+      <div class="d-flex align-items-end h-100">
+        <button class="btn btn-outline-light me-2" (click)="diaAnterior()">
+          <i class="fas fa-chevron-left"></i> Ayer
+        </button>
+        <button class="btn btn-outline-light me-2" (click)="hoy()">
+          Hoy
+        </button>
+        <button class="btn btn-outline-light" (click)="diaSiguiente()">
+          Mañana <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+  </div>
 
-      <div class="hour-label">{{ h.label }}</div>
-
-      <div class="slots">
-        <div class="slot-wrapper" *ngFor="let s of h.slots; let i = index">
-
-          <!-- Cuadro -->
-          <div class="slot" [ngClass]="s.estado">
-            <div class="slot-info" *ngIf="s.cliente">
-              <strong>{{ s.cliente }}</strong><br>
-              <span *ngFor="let serv of s.servicios">
-              - {{ serv }}<br>
-            </span>
-            </div>
+  <!-- Resumen del día -->
+  <div class="card mb-4">
+    <div class="card-body">
+      <h5 class="card-title">
+        <i class="fas fa-calendar-day me-2"></i>
+        {{ getNombreDia() }} {{ fechaSeleccionada | date:'dd/MM/yyyy' }}
+      </h5>
+      <div class="row">
+        <div class="col-md-3">
+          <div class="stat-card">
+            <i class="fas fa-clock text-primary fa-2x mb-2"></i>
+            <h3>{{ totalReservasHoy }}</h3>
+            <p class="text-muted">Reservas totales</p>
           </div>
-
-          <!-- Etiqueta del segmento -->
-          <div class="slot-label">
-            {{ getSegmentLabel(i) }}
+        </div>
+        <div class="col-md-3">
+          <div class="stat-card">
+            <i class="fas fa-user-clock text-warning fa-2x mb-2"></i>
+            <h3>{{ reservasPendientesHoy }}</h3>
+            <p class="text-muted">Pendientes</p>
           </div>
-
+        </div>
+        <div class="col-md-3">
+          <div class="stat-card">
+            <i class="fas fa-check-circle text-success fa-2x mb-2"></i>
+            <h3>{{ reservasConfirmadasHoy }}</h3>
+            <p class="text-muted">Terminadas</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="stat-card">
+            <i class="fas fa-times-circle text-danger fa-2x mb-2"></i>
+            <h3>{{ reservasCanceladasHoy }}</h3>
+            <p class="text-muted">Canceladas</p>
+          </div>
         </div>
       </div>
-
     </div>
-
-
-  <!-- Leyenda -->
-  <div class="leyenda">
-    <div><span class="cuadro disponible"></span>Disponible</div>
-    <div><span class="cuadro ocupado"></span>Ocupado</div>
-    <div><span class="cuadro pendiente"></span>Pendiente</div>
-    <div><span class="cuadro ahora"></span>Ahora</div>
   </div>
 
+  <!-- Lista de reservas del día -->
+  <div class="card mt-4">
+    <div class="card-header">
+      <h5 class="mb-0">
+        <i class="fas fa-list me-2"></i>
+        Reservas para {{ fechaSeleccionada | date:'dd/MM/yyyy' }}
+      </h5>
+    </div>
+    <div class="card-body">
+      <div *ngIf="reservasDelDia.length === 0" class="text-center py-4">
+        <i class="fas fa-calendar-times fa-3x text-muted mb-3"></i>
+        <h5>No hay reservas para este día</h5>
+        <p class="text-muted">Todo el día disponible</p>
+      </div>
+
+      <div *ngIf="reservasDelDia.length > 0">
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+            <tr>
+              <th>Hora</th>
+              <th>Cliente</th>
+              <th>Servicios</th>
+              <th>Duración</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let reserva of reservasDelDia"
+                [ngClass]="{
+                    'table-warning': reserva.state === 'PENDING',
+                    'table-active': reserva.state === 'STARTED',
+                    'table-success': reserva.state === 'FINISHED',
+                    'table-danger': reserva.state === 'CANCELLED'
+                  }">
+              <td>
+                <strong>{{ reserva.startTime | slice:0:5 }}</strong> -
+                {{ reserva.endTime | slice:0:5 }}
+              </td>
+              <td>Cliente #{{ reserva.clientId }}</td>
+              <td>
+                  <span *ngFor="let servicioId of reserva.services"
+                        class="badge bg-secondary me-1">
+                    {{ getNombreServicio(servicioId) }}
+                  </span>
+              </td>
+              <td>{{ calcularDuracionReserva(reserva) }} min</td>
+              <td>
+                  <span class="badge"
+                        [ngClass]="{
+                          'bg-warning': reserva.state === 'PENDING',
+                          'bg-active': reserva.state === 'STARTED',
+                          'bg-success': reserva.state === 'FINISHED',
+                          'bg-danger': reserva.state === 'CANCELLED'
+                        }">
+                    {{ getEstadoTexto(reserva.state) }}
+                  </span>
+              </td>
+              <td>
+                <button *ngIf="reserva.state === 'PENDING'"
+                        class="btn btn-sm btn-outline-success me-1"
+                        (click)="confirmarReserva(reserva)">
+                  <i class="fas fa-check"></i>
+                Iniciar reserva</button>
+                <button *ngIf="reserva.state === 'STARTED'"
+                        class="btn btn-sm btn-outline-primary me-1"
+                        (click)="terminarReserva(reserva)">
+                  <i class="fas fa-check"></i>
+                Finalizar reserva</button>
+
+                <button *ngIf="reserva.state !== 'CANCELLED' && reserva.state !== 'FINISHED'"
+                        class="btn btn-sm btn-outline-danger"
+                        (click)="cancelarReserva(reserva)">
+                  <i class="fas fa-times"></i>
+                Cancelar reserva</button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Resumen financiero -->
+        <div class="card mt-3">
+          <div class="card-body">
+            <h6 class="card-title">Resumen financiero del día</h6>
+            <div class="row">
+              <div class="col-md-4">
+                <p class="mb-1">Total reservas confirmadas:</p>
+                <h4>{{ calcularTotalReservasConfirmadas() | currency }}</h4>
+              </div>
+              <div class="col-md-4">
+                <p class="mb-1">Horas trabajadas:</p>
+                <h4>{{ calcularHorasTrabajadas() }} horas</h4>
+              </div>
+              <div class="col-md-4">
+                <p class="mb-1">Servicios realizados:</p>
+                <h4>{{ calcularTotalServicios() }}</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
