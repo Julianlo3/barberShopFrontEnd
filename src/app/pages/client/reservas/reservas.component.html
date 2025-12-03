@@ -19,32 +19,37 @@
     <!-- Formulario -->
     <form (ngSubmit)="onSubmit()" class="col-12 col-md-6 form-cita">
       <div class="mb-3">
-        <label for="citaNombreUser" class="form-label">Nombre completo</label>
+        <label for="citaNombreUser" class="form-label">Tu nombre</label>
         <input
           type="text"
           class="form-control"
           id="citaNombreUser"
-          [(ngModel)]="cita.nombreCliente"
+          [(ngModel)]="nombreCliente"
           name="nombreCliente"
           placeholder="Pepito Bigotes"
-          required
+          readonly="readonly"
         />
       </div>
 
-      <div class="mb-3">
+      <div class="mb-3" >
         <label for="selectBarbero" class="form-label">Barbero a elección</label>
         <select
           class="form-select"
           id="selectBarbero"
-          [(ngModel)]="cita.nombreBarbero"
+          [(ngModel)]="cita.barberId"
           name="barbero"
           required
+          (change)="cargarHorarioBarbero($event)"
         >
-          <option disabled selected>Seleccione un barbero</option>
-          <option>Juan</option>
-          <option>Carlos</option>
-          <option>David</option>
+          <option [ngValue]="null" disabled>Seleccione un barbero a preferencia</option>
+          <option *ngFor="let b of barberos" [ngValue]="b.id">{{ b.name }}
+          </option>
         </select>
+      </div>
+
+      <div class="mb-3">
+        <h2>Días en que el barbero esta disponible</h2>
+        <p>{{horarioBarbero.workDays}}</p>
       </div>
 
       <div class="row mb-4">
@@ -54,7 +59,7 @@
             type="date"
             id="fechaCita"
             class="form-control"
-            [(ngModel)]="cita.fechaCita"
+            [(ngModel)]="cita.date"
             name="fechaCita"
             required
           />
@@ -65,7 +70,7 @@
             type="text"
             id="horaCita"
             class="form-control"
-            [(ngModel)]="cita.horaCita"
+            [(ngModel)]="cita.startTime"
             name="horaCita"
             required
           />

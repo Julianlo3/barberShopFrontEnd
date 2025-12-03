@@ -56,9 +56,18 @@ export class AllServicesComponent {
   }
 
   seleccionarCategoria(id: string) {
+    this.servicios = [];
     this.categoriaSeleccionada = id;
-    console.log('Categoría seleccionada:', id);
+    console.log("id seleccionado: "+id);
+    this.servicioService.getServiciosByCategory(id).subscribe(
+      servicios => {this.servicios = servicios; console.log("longitud de servicios: "+servicios.length);}
+    );
+    console.log(this.servicios);
+  }
 
+  quitarFiltro() {
+    this.categoriaSeleccionada = '';
+    this.cargarServicios();
   }
 
 }

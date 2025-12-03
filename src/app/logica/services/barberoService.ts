@@ -58,5 +58,14 @@ export class BarberoService {
     });
   }
 
+  getScheduleByBarberId(barberId: number): Observable<any> {
+    const token = this.storageService.getToken();
+    return this.http.get(`${this.configApi.getApiURL()}/barber/schedule/${barberId}`, {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      })
+    });
+  }
+
 }
 

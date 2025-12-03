@@ -4,19 +4,32 @@
 </div>
 
 
-    <div id="cortesCards2" class="container-fluid">
-      <div class="container-fluid">
-        <ul class="nav justify-content-center">
-          <li class="nav-item" *ngFor="let cat of categorias">
-            <a class="nav-link categoria"
-               [class.active]="cat.name === categoriaSeleccionada"
-               (click)="seleccionarCategoria(cat.id)">
-              {{ cat.name }}
-            </a>
-          </li>
-        </ul>
+<div id="cortesCards2" class="container-fluid">
+  <div class="container-fluid">
+    <div class="radio-buttons-container">
+      <div class="radio-option" *ngFor="let cat of categorias">
+        <input type="radio"
+               name="categoriaGroup"
+               [id]="'categoria-' + cat.id"
+               [value]="cat.id"
+               [checked]="cat.id === categoriaSeleccionada"
+               (change)="seleccionarCategoria(cat.name)">
+        <label [for]="'categoria-' + cat.id" class="radio-label">
+          {{ cat.name }}
+        </label>
       </div>
     </div>
+
+    <!-- Botón para quitar filtros -->
+    <div class="clear-filter-container" *ngIf="categoriaSeleccionada">
+      <button class="btn-clear-filter" (click)="quitarFiltro()">
+        <i class="bi bi-x-circle"></i> Quitar filtro
+      </button>
+    </div>
+  </div>
+</div>
+
+
 
   <div class="card-content">
     <div *ngIf="servicios.length > 0; else noServicios">

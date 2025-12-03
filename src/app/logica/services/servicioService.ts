@@ -49,6 +49,12 @@ export class ServicioService {
     return this.http.get(this.configApi.getApiURL()+"/service");
   }
 
+  getServiciosByCategory(category: string): Observable<any> {
+    return this.http.get(this.configApi.getApiURL()+"/service",{
+      params: {category}
+    });
+  }
+
 
 
 
